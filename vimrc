@@ -1,89 +1,14 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: amix the lucky stiff
-"             http://amix.dk - amix@amix.dk
-"
-" Version: 3.1 - 17/01/10 19:34:18
-"
-" Blog_post: 
-"       http://amix.dk/blog/post/19486#The-ultimative-vim-configuration-vimrc
-" Syntax_highlighted:
-"       http://amix.dk/vim/vimrc.html
-" Raw_version: 
-"       http://amix.dk/vim/vimrc.txt
-"
-" How_to_Install:
-"    $ mkdir ~/.vim_runtime
-"    $ svn co svn://orangoo.com/vim ~/.vim_runtime
-"    $ cat ~/.vim_runtime/install.sh
-"    $ sh ~/.vim_runtime/install.sh <system>
-"      <sytem> can be `mac`, `linux` or `windows`
-"
-" How_to_Upgrade:
-"    $ svn update ~/.vim_runtime
-"
-" Sections:
-"    -> General
-"    -> VIM user interface
-"    -> Colors and Fonts
-"    -> Files and backups
-"    -> Text, tab and indent related
-"    -> Visual mode related
-"    -> Command mode related
-"    -> Moving around, tabs and buffers
-"    -> Statusline
-"    -> Parenthesis/bracket expanding
-"    -> General Abbrevs
-"    -> Editing mappings
-"
-"    -> Cope
-"    -> Minibuffer plugin
-"    -> Omni complete functions
-"    -> Python section
-"    -> JavaScript section
-"
-" Plugins_Included:
-"     > minibufexpl.vim - http://www.vim.org/scripts/script.php?script_id=159
-"       Makes it easy to get an overview of buffers:
-"           info -> :e ~/.vim_runtime/plugin/minibufexpl.vim
-"
-"     > bufexplorer - http://www.vim.org/scripts/script.php?script_id=42
-"       Makes it easy to switch between buffers:
-"           info -> :help bufExplorer
-"
-"     > yankring.vim - http://www.vim.org/scripts/script.php?script_id=1234
-"       Emacs's killring, useful when using the clipboard:
-"           info -> :help yankring
-"
-"     > surround.vim - http://www.vim.org/scripts/script.php?script_id=1697
-"       Makes it easy to work with surrounding text:
-"           info -> :help surround
-"
-"     > snipMate.vim - http://www.vim.org/scripts/script.php?script_id=2540
-"       Snippets for many languages (similar to TextMate's):
-"           info -> :help snipMate
-"
-"     > fuzzyfinder - http://www.vim.org/scripts/script.php?script_id=1984
-"       Find files fast (similar to TextMate's feature):
-"           info -> :help fuzzyfinder@en
-"
-"  Revisions:
-"     > 3.1: Added revisions ;) and bufexplorer.vim
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
 set history=300
 
-" Enable filetype plugin
-filetype plugin on
-filetype indent on
-
+filetype off
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
+filetype plugin indent on
+
+set nocompatible
+
+set modelines=0
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -91,29 +16,21 @@ set autoread
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
-let g:mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
 
 " Fast editing of the .vimrc
-map <leader>e :e! ~/.vim_runtime/vimrc<cr>
+map <leader>e :e! ~/.vimrc<cr>
 
 " When vimrc is edited, reload it
-autocmd! bufwritepost vimrc source ~/.vim_runtime/vimrc
+autocmd! bufwritepost .vimrc source ~/.vimrc
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 7 lines to the curors - when moving vertical..
-set so=7
-
-set wildmenu "Turn on WiLd menu
-
-set ruler "Always show current position
-
-set cmdheight=2 "The commandbar height
+set cmdheight=1 "The commandbar height
 
 set hid "Change buffer - without saving
 
@@ -121,21 +38,18 @@ set hid "Change buffer - without saving
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
-set ignorecase "Ignore case when searching
-
-set hlsearch "Highlight search things
-
-set incsearch "Make search act like search in modern browsers
-
-set magic "Set magic on, for regular expressions
-
-set showmatch "Show matching bracets when text indicator is over them
-set mat=2 "How many tenths of a second to blink
-
 " No sound on errors
 set noerrorbells
-set novisualbell
+set visualbell
 set t_vb=
+set ttyfast
+set ruler
+set cursorline
+set showmode
+set showcmd
+set wildmenu
+set wildmode=list:longest
+colorscheme vividchalk
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -143,28 +57,8 @@ set t_vb=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable "Enable syntax hl
 
-" Set font according to system
-fun! MySys()
-    return "linux"
-endfun
-if MySys() == "mac"
-  set gfn=Bitstream\ Vera\ Sans\ Mono:h13
-  set shell=/bin/bash
-elseif MySys() == "windows"
-  set gfn=Bitstream\ Vera\ Sans\ Mono:h10
-elseif MySys() == "linux"
-  set gfn=Monospace\ 10
-  set shell=/bin/bash
-endif
-
-colorscheme vividchalk
-set t_Co=256
-if has("gui_running")
-  colorscheme vividchalk
-  set background=light
-  set guioptions-=T
-  set nu
-endif
+set gfn=Monaco\ 10
+set shell=/bin/bash
 
 set encoding=utf8
 try
@@ -190,59 +84,20 @@ set noswapfile
 set expandtab
 set shiftwidth=2
 set tabstop=2
+set softtabstop=2
 set smarttab
 
+set scrolloff=3
 set lbr
 set tw=500
 
-set ai "Auto indent
-set si "Smart indet
+set autoindent "Auto indent
+set smartindent "Smart indet
 set wrap "Wrap lines
 
 map <leader>t2 :setlocal shiftwidth=2<cr>
 map <leader>t4 :setlocal shiftwidth=4<cr>
-map <leader>t8 :setlocal shiftwidth=4<cr>
-
-
-""""""""""""""""""""""""""""""
-" => Visual mode related
-""""""""""""""""""""""""""""""
-" Really useful!
-"  In visual mode when you press * or # to search for the current selection
-vnoremap <silent> * :call VisualSearch('f')<CR>
-vnoremap <silent> # :call VisualSearch('b')<CR>
-
-" When you press gv you vimgrep after the selected text
-vnoremap <silent> gv :call VisualSearch('gv')<CR>
-map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
-
-
-function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
-endfunction 
-
-" From an idea by Michael Naumann
-function! VisualSearch(direction) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
-
-    let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-    if a:direction == 'b'
-        execute "normal ?" . l:pattern . "^M"
-    elseif a:direction == 'gv'
-        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
-    elseif a:direction == 'f'
-        execute "normal /" . l:pattern . "^M"
-    endif
-
-    let @/ = l:pattern
-    let @" = l:saved_reg
-endfunction
-
+map <leader>t8 :setlocal shiftwidth=8<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -254,50 +109,19 @@ cno $d e ~/Desktop/
 cno $j e ./
 cno $c e <C-\>eCurrentFileDir("e")<cr>
 
-" $q is super useful when browsing on the command line
-cno $q <C-\>eDeleteTillSlash()<cr>
-
 " Bash like keys for the command line
 cnoremap <C-A>		<Home>
 cnoremap <C-E>		<End>
 cnoremap <C-K>		<C-U>
 
-cnoremap <C-P> <Up>
-cnoremap <C-N> <Down>
-
-" Useful on some European keyboards
-map ½ $
-imap ½ $
-vmap ½ $
-cmap ½ $
-
-
 func! Cwd()
   let cwd = getcwd()
-  return "e " . cwd 
-endfunc
-
-func! DeleteTillSlash()
-  let g:cmd = getcmdline()
-  if MySys() == "linux" || MySys() == "mac"
-    let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*", "\\1", "")
-  else
-    let g:cmd_edited = substitute(g:cmd, "\\(.*\[\\\\]\\).*", "\\1", "")
-  endif
-  if g:cmd == g:cmd_edited
-    if MySys() == "linux" || MySys() == "mac"
-      let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*/", "\\1", "")
-    else
-      let g:cmd_edited = substitute(g:cmd, "\\(.*\[\\\\\]\\).*\[\\\\\]", "\\1", "")
-    endif
-  endif   
-  return g:cmd_edited
+  return "e " . cwd
 endfunc
 
 func! CurrentFileDir(cmd)
   return a:cmd . " " . expand("%:p:h") . "/"
 endfunc
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs and buffers
@@ -305,13 +129,16 @@ endfunc
 " Map space to / (search) and c-space to ? (backgwards search)
 map <space> /
 map <c-space> ?
-map <silent> <leader><cr> :noh<cr>
+map <silent> <leader><space> :noh<cr>
 
 " Smart way to move btw. windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+" split verticalement et passe sur la deuxieme fenetre
+nnoremap <leader>w <C-w>v<C-w>l
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
@@ -327,13 +154,12 @@ map <C-left> <ESC>:bp<CR>
 
 " Tab configuration
 map <leader>tn :tabnew %<cr>
-map <leader>te :tabedit 
+map <leader>te :tabedit
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
+map <leader>tm :tabmove
 
 " When pressing <leader>cd switch to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>
-
 
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
@@ -355,13 +181,12 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
   set switchbuf=usetab
   set stal=2
 catch
 endtry
-
 
 """"""""""""""""""""""""""""""
 " => Statusline
@@ -371,7 +196,6 @@ set laststatus=2
 
 " Format the statusline
 set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
-
 
 function! CurDir()
     let curdir = substitute(getcwd(), '/Users/amir/', "~/", "g")
@@ -415,13 +239,6 @@ nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-if MySys() == "mac"
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
-endif
 
 "Delete trailing white space, useful for Python ;)
 func! DeleteTrailingWS()
@@ -485,20 +302,6 @@ map <leader>sa zg
 map <leader>s? z=
 
 
-""""""""""""""""""""""""""""""
-" => Python section
-""""""""""""""""""""""""""""""
-au FileType python set nocindent
-syn keyword pythonConstant True None False self
-au BufNewFile,BufRead *.jinja set syntax=htmljinja
-
-au FileType python inoremap <buffer> $r return 
-au FileType python inoremap <buffer> $i import 
-au FileType python inoremap <buffer> $p print 
-au FileType python inoremap <buffer> $f #--- PH ----------------------------------------------<esc>FP2xi
-au FileType python map <buffer> <leader>C ?class 
-au FileType python map <buffer> <leader>D ?def 
-
 
 """"""""""""""""""""""""""""""
 " => JavaScript section
@@ -510,10 +313,10 @@ au FileType javascript setl nocindent
 au FileType javascript imap <c-t> AJS.log();<esc>hi
 au FileType javascript imap <c-a> alert();<esc>hi
 
-au FileType javascript inoremap <buffer> $r return 
+au FileType javascript inoremap <buffer> $r return
 au FileType javascript inoremap <buffer> $f //--- PH ----------------------------------------------<esc>FP2xi
 
-function! JavaScriptFold() 
+function! JavaScriptFold()
     setl foldmethod=syntax
     setl foldlevelstart=1
     syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
@@ -553,24 +356,58 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 map <leader>q :e ~/buffer<cr>
 
 " Quickly show/hide NerdTree
-map <F2> :NERDTreeToggle<CR>
+map <leader>p :NERDTreeToggle<CR>
 
-if has("gui_running")
-"GUI is running or is about to start.
-"Maximize gvim window.
-set lines=69 columns=1000
-" if we're in console Vim, then we just want to leave the window size alone --
-" let it simply be whatever the window size of the terminal is before vim is
-" launched
-"else
-"  "This is console Vim.
-"  if exists("+lines")
-"    set lines=69
-"  endif
-"  if exists("+columns")
-"    set columns=100
-"  endif
-endif
+" Souligne la ligne en cours avec des signes '='
+nnoremap <leader>1 yypVr=
 
-let g:ackprg="ack-grep -H --nocolor --nogroup --column" 
+" dompte les recherches
+" mode escape perl par defaut
+nnoremap / /\v
+vnoremap / /\v
+set ignorecase
+set smartcase
+set incsearch
+set showmatch
+set hlsearch
+set magic "Set magic on, for regular expressions
 
+set mat=2 "How many tenths of a second to blink
+
+" gestion des longues lignes
+set wrap
+set textwidth=79
+set formatoptions=qrn1
+nnoremap j gj
+nnoremap k gk
+
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+
+
+set list
+set listchars=tab:▸\ ,eol:¬
+
+
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+
+" Supprime les espaces en trop en fin de ligne
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+" acces rapide a Ack avec ,a
+nnoremap <leader>a :Ack
+
+" pour HTML : fold tag sur ,ft
+nnoremap <leader>ft Vatzf
+
+" Trie les proprietes CSS avec ,S
+nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
+
+"This next mapping imitates TextMates Ctrl+Q function to re-hardwrap paragraphs of text:
+nnoremap <leader>q gqip
+
+"I have a ,v mapping to reselect the text that was just pasted so I can perform commands (like indentation) on it:
+nnoremap <leader>v V`]
+
+" equivalent de ESC rapide en mode insertion : jj
+inoremap jj <ESC>
