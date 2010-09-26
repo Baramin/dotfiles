@@ -1,0 +1,16 @@
+#
+# bash completion support for cheat
+#
+
+_cheat() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    COMPREPLY=( $(compgen -W "$(cheat sheets | xargs echo)" -- $cur) )
+    return 0
+}
+
+complete -o default -o nospace -F _cheat cheat
