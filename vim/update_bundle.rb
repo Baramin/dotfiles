@@ -22,6 +22,7 @@ git_bundles = [
   "git://github.com/vim-ruby/vim-ruby.git",
   "git://github.com/mileszs/ack.vim.git",
   "git://github.com/scrooloose/nerdcommenter.git",
+  "git://github.com/mattn/zencoding-vim.git",
 ]
 
 local_dirs = [
@@ -36,7 +37,7 @@ vim_org_scripts = [
   ["jquery",        "12107", "syntax"],
   ["vibrantink",        "1794", "colors"],
   ["vividchalk",        "1891", "colors"],
-  ["ZenCoding",   "2981", "plugin"],
+  #["ZenCoding",   "2981", "plugin"],
 ]
 
 require 'fileutils'
