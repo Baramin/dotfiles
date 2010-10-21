@@ -1,43 +1,44 @@
 #!/usr/bin/env ruby
 
 git_bundles = [ 
-  "git://github.com/astashov/vim-ruby-debugger.git",
-  "git://github.com/msanders/snipmate.vim.git",
-  "git://github.com/scrooloose/nerdtree.git",
-  "git://github.com/timcharper/textile.vim.git",
-  "git://github.com/tpope/vim-cucumber.git",
-  "git://github.com/tpope/vim-fugitive.git",
-  "git://github.com/tpope/vim-git.git",
-  "git://github.com/tpope/vim-haml.git",
-  "git://github.com/tpope/vim-markdown.git",
-  "git://github.com/tpope/vim-rails.git",
-  "git://github.com/tpope/vim-surround.git",
-  "git://github.com/tpope/vim-repeat.git",
-  "git://github.com/tpope/vim-ragtag.git",
-  "git://github.com/tpope/vim-vividchalk.git",
-  "git://github.com/tsaleh/vim-align.git",
-  "git://github.com/tsaleh/vim-shoulda.git",
-  "git://github.com/tsaleh/vim-supertab.git",
-  "git://github.com/tsaleh/vim-tcomment.git",
-  "git://github.com/vim-ruby/vim-ruby.git",
-  "git://github.com/mileszs/ack.vim.git",
-  "git://github.com/scrooloose/nerdcommenter.git",
-  "git://github.com/mattn/zencoding-vim.git",
+  #"git://github.com/astashov/vim-ruby-debugger.git",
+  #"git://github.com/msanders/snipmate.vim.git",
+  #"git://github.com/scrooloose/nerdtree.git",
+  #"git://github.com/timcharper/textile.vim.git",
+  #"git://github.com/tpope/vim-cucumber.git",
+  #"git://github.com/tpope/vim-fugitive.git",
+  #"git://github.com/tpope/vim-git.git",
+  #"git://github.com/tpope/vim-haml.git",
+  #"git://github.com/tpope/vim-markdown.git",
+  #"git://github.com/tpope/vim-rails.git",
+  #"git://github.com/tpope/vim-surround.git",
+  #"git://github.com/tpope/vim-repeat.git",
+  #"git://github.com/tpope/vim-ragtag.git",
+  #"git://github.com/tpope/vim-vividchalk.git",
+  #"git://github.com/tsaleh/vim-align.git",
+  #"git://github.com/tsaleh/vim-shoulda.git",
+  #"git://github.com/tsaleh/vim-supertab.git",
+  #"git://github.com/tsaleh/vim-tcomment.git",
+  #"git://github.com/vim-ruby/vim-ruby.git",
+  #"git://github.com/mileszs/ack.vim.git",
+  #"git://github.com/scrooloose/nerdcommenter.git",
+  #"git://github.com/mattn/zencoding-vim.git",
+  #"git://github.com/sjl/gundo.vim.git",
 ]
 
 local_dirs = [
-  "/home/ace/.vim-utils/fuzzyfinder",
-  "/home/ace/.vim-utils/fuzzyfinder_textmate",
-  "/home/ace/.vim-utils/eclim",
+  #"/home/ace/.vim-utils/fuzzyfinder",
+  #"/home/ace/.vim-utils/fuzzyfinder_textmate",
+  #"/home/ace/.vim-utils/eclim",
 ]
 
 vim_org_scripts = [
-  ["IndexedSearch", "7062",  "plugin"],
-  ["gist",          "12732", "plugin"],
-  ["jquery",        "12107", "syntax"],
-  ["vibrantink",        "1794", "colors"],
-  ["vividchalk",        "1891", "colors"],
-  ["MRU",   "521", "plugin"],
+  #["IndexedSearch", "7062",  "plugin"],
+  #["gist",          "12732", "plugin"],
+  #["jquery",        "12107", "syntax"],
+  #["vibrantink",        "1794", "colors"],
+  #["vividchalk",        "1891", "colors"],
+  #["MRU",   "194", "plugin"],
 ]
 
 require 'fileutils'
@@ -47,8 +48,9 @@ bundles_dir = File.join(File.dirname(__FILE__), "bundle")
 
 FileUtils.cd(bundles_dir)
 
-puts "Trashing everything (lookout!)"
-Dir["*"].each {|d| FileUtils.rm_rf d }
+puts "Trashing everything (canceled)"
+#puts "Trashing everything (lookout!)"
+#Dir["*"].each {|d| FileUtils.rm_rf d }
 
 git_bundles.each do |url|
   dir = url.split('/').last.sub(/\.git$/, '')

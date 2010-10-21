@@ -1,3 +1,34 @@
+  " BUNDLE: git://github.com/astashov/vim-ruby-debugger.git
+  " BUNDLE: git://github.com/msanders/snipmate.vim.git
+  " BUNDLE: git://github.com/scrooloose/nerdtree.git
+  " BUNDLE: git://github.com/timcharper/textile.vim.git
+  " BUNDLE: git://github.com/tpope/vim-cucumber.git
+  " BUNDLE: git://github.com/tpope/vim-fugitive.git
+  " BUNDLE: git://github.com/tpope/vim-git.git
+  " BUNDLE: git://github.com/tpope/vim-haml.git
+  " BUNDLE: git://github.com/tpope/vim-markdown.git
+  " BUNDLE: git://github.com/tpope/vim-rails.git
+  " BUNDLE: git://github.com/tpope/vim-surround.git
+  " BUNDLE: git://github.com/tpope/vim-repeat.git
+  " BUNDLE: git://github.com/tpope/vim-ragtag.git
+  " BUNDLE: git://github.com/tpope/vim-vividchalk.git
+  " BUNDLE: git://github.com/tsaleh/vim-align.git
+  " BUNDLE: git://github.com/tsaleh/vim-shoulda.git
+  " BUNDLE: git://github.com/tsaleh/vim-supertab.git
+  " BUNDLE: git://github.com/tsaleh/vim-tcomment.git
+  " BUNDLE: git://github.com/vim-ruby/vim-ruby.git
+  " BUNDLE: git://github.com/mileszs/ack.vim.git
+  " BUNDLE: git://github.com/scrooloose/nerdcommenter.git
+  " BUNDLE: git://github.com/mattn/zencoding-vim.git
+  " BUNDLE: git://github.com/sjl/gundo.vim.git
+  "
+  " BUNDLE: git://github.com/vim-scripts/vibrantink.git
+  " BUNDLE: git://github.com/vim-scripts/MRU.git
+  " BUNDLE: git://github.com/vim-scripts/jQuery.git
+  " BUNDLE: git://github.com/vim-scripts/IndexedSearch.git
+  " BUNDLE: git://github.com/vim-scripts/Command-T.git
+  "
+
 " Sets how many lines of history VIM has to remember
 set history=300
 
@@ -331,13 +362,13 @@ endfunction
 """"""""""""""""""""""""""""""
 " => Fuzzy finder
 """"""""""""""""""""""""""""""
-try
-    call fuf#defineLaunchCommand('FufCWD', 'file', 'fnamemodify(getcwd(), ''%:p:h'')')
-    map <leader>t :FufCWD **/<CR>
-catch
-endtry
+"try
+    "call fuf#defineLaunchCommand('FufCWD', 'file', 'fnamemodify(getcwd(), ''%:p:h'')')
+    "map <leader>t :FufCWD **/<CR>
+"catch
+"endtry
 
-map <C-t> <ESC>:FuzzyFinderTextMate<CR>
+"map <C-t> <ESC>:FuzzyFinderTextMate<CR>
 
 """"""""""""""""""""""""""""""
 " => Vim grep
@@ -411,3 +442,7 @@ nnoremap <leader>v V`]
 
 " equivalent de ESC rapide en mode insertion : jj
 inoremap jj <ESC>
+
+" Pour gundo plugin
+nnoremap <F5> :GundoToggle<CR>
+
