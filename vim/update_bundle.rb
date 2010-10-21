@@ -27,8 +27,8 @@ git_bundles = [
 ]
 
 local_dirs = [
-  #"/home/ace/.vim-utils/fuzzyfinder",
-  #"/home/ace/.vim-utils/fuzzyfinder_textmate",
+  "/home/ace/.vim-utils/fuzzyfinder",
+  "/home/ace/.vim-utils/fuzzyfinder_textmate",
   #"/home/ace/.vim-utils/eclim",
 ]
 

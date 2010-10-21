@@ -28,6 +28,8 @@
   " BUNDLE: git://github.com/vim-scripts/IndexedSearch.git
   " BUNDLE: git://github.com/vim-scripts/Command-T.git
   "
+  " BUNDLE: http://github.com/namedpipe/fuzzyfinder_textmate.git
+  "
 
 " Sets how many lines of history VIM has to remember
 set history=300
@@ -362,13 +364,13 @@ endfunction
 """"""""""""""""""""""""""""""
 " => Fuzzy finder
 """"""""""""""""""""""""""""""
-"try
-    "call fuf#defineLaunchCommand('FufCWD', 'file', 'fnamemodify(getcwd(), ''%:p:h'')')
-    "map <leader>t :FufCWD **/<CR>
-"catch
-"endtry
+try
+    call fuf#defineLaunchCommand('FufCWD', 'file', 'fnamemodify(getcwd(), ''%:p:h'')')
+    map <leader>t :FufCWD **/<CR>
+catch
+endtry
 
-"map <C-t> <ESC>:FuzzyFinderTextMate<CR>
+map <C-t> <ESC>:FuzzyFinderTextMate<CR>
 
 """"""""""""""""""""""""""""""
 " => Vim grep
