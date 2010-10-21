@@ -37,7 +37,7 @@ vim_org_scripts = [
   ["jquery",        "12107", "syntax"],
   ["vibrantink",        "1794", "colors"],
   ["vividchalk",        "1891", "colors"],
-  #["ZenCoding",   "2981", "plugin"],
+  ["MRU",   "521", "plugin"],
 ]
 
 require 'fileutils'

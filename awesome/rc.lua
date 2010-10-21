@@ -66,9 +66,8 @@ shifty.config.tags = {
   ["4:gvim"]  = { position = 4, },
   ["5:sys"]  = { position = 5, exclusive = true,  nopopup = true, },
   ["7:msg"]  = { position = 7, exclusive = true,  nopopup = true,  },
-  ["8:view"] = { position = 8, exclusive = true, nopopup = true,  },
+  ["8:view"] = { position = 8, exclusive = true,  },
   ["9:vbox"] = { position = 9, exclusive = true, nopopup = true,  },
-  ["12:dl"] = { position = 12, nopopup = true, spawn = "Transmission"},
 }
 
 shifty.taglist = mytaglist 
@@ -76,7 +75,6 @@ shifty.taglist = mytaglist
 
 shifty.config.apps = {
 
-  { match = {"Transmission","Tucan.py"                    }, tag = "12:dl" },
   { match = {"Gvim"                                       }, tag = "4:gvim", opacity = 1.0 },
   { match = {"dev -" }, tag = "3:dev", opacity = 1.0 },
   { match = {"Eterm", "Term -" }, tag = "1:term", opacity = 1.0 },
@@ -84,7 +82,7 @@ shifty.config.apps = {
   { match = {"Firefox","Iceweasel","Vimperator","Shiretoko"} , tag = "2:www", opacity = 1.0       } ,
   { match = {"Gimp"                           }, tag = "6:gimp",  float = true , opacity = 1.0    },
   { match = {"gimp-image-window"              }, slave = true,  opacity = 1.0                     },
-  { match = {"MPlayer","ffplay","vlc"                       }, float = true,  opacity = 1.0             },
+  { match = {"MPlayer","ffplay","vlc"                       }, tag = "8:view", float = true,  opacity = 1.0             },
   { match = {"Pidgin"                         }, tag = "7:msg",                                   },
   { match = {"htop"                           }, tag = "5:sys",                                   },
   { match = {"VirtualBox"                     }, tag = "9:vbox", float = true,  opacity = 1.0     },
@@ -347,7 +345,7 @@ globalkeys = awful.util.table.join(
 -- Shifty
     
     awful.key({ modkey, "Shift"   }, "t",             shifty.add),
-    awful.key({ modkey, "Shift"   }, "r",           shifty.rename),
+    awful.key({ modkey, "Control"   }, "r",           shifty.rename),
     awful.key({ modkey, "Shift"   }, "w",           shifty.del),
 
     awful.key({ modkey, "Shift"   }, "Left",   shifty.shift_prev        ),
