@@ -15,20 +15,23 @@
   " BUNDLE: git://github.com/tsaleh/vim-align.git
   " BUNDLE: git://github.com/tsaleh/vim-shoulda.git
   " BUNDLE: git://github.com/tsaleh/vim-supertab.git
-  " BUNDLE: git://github.com/tsaleh/vim-tcomment.git
   " BUNDLE: git://github.com/vim-ruby/vim-ruby.git
   " BUNDLE: git://github.com/mileszs/ack.vim.git
   " BUNDLE: git://github.com/scrooloose/nerdcommenter.git
   " BUNDLE: git://github.com/mattn/zencoding-vim.git
   " BUNDLE: git://github.com/sjl/gundo.vim.git
+  " BUNDLE: git://github.com/nathanaelkane/vim-indent-guides.git
+  " BUNDLE: git://github.com/nanotech/jellybeans.vim.git
+  " BUNDLE: git://github.com/fholgado/minibufexpl.vim.git
+  " BUNDLE: git://github.com/cespare/vim-bclose.git
+  " BUNDLE: git://github.com/Lokaltog/vim-easymotion.git
   "
   " BUNDLE: git://github.com/vim-scripts/vibrantink.git
-  " BUNDLE: git://github.com/vim-scripts/MRU.git
+  " BONDLE: git://github.com/vim-scripts/MRU.git
+  " BUNDLE: git://github.com/ornicar/vim-mru.git
   " BUNDLE: git://github.com/vim-scripts/jQuery.git
-  " BUNDLE: git://github.com/vim-scripts/IndexedSearch.git
   " BUNDLE: git://github.com/vim-scripts/Command-T.git
   "
-  " BUNDLE: http://github.com/namedpipe/fuzzyfinder_textmate.git
   "
 
 " Sets how many lines of history VIM has to remember
@@ -50,11 +53,8 @@ set autoread
 " like <leader>w saves the current file
 let mapleader = ","
 
-" Fast saving
-nmap <leader>w :w!<cr>
-
 " Fast editing of the .vimrc
-map <leader>e :e! ~/.vimrc<cr>
+map <leader>E :e! ~/.vimrc<cr>
 
 " When vimrc is edited, reload it
 autocmd! bufwritepost .vimrc source ~/.vimrc
@@ -173,9 +173,6 @@ map <C-l> <C-W>l
 " split verticalement et passe sur la deuxieme fenetre
 nnoremap <leader>w <C-w>v<C-w>l
 
-" Close the current buffer
-map <leader>bd :Bclose<cr>
-
 " Close all the buffers
 map <leader>ba :1,300 bd!<cr>
 
@@ -185,34 +182,8 @@ map <leader>ba :1,300 bd!<cr>
 map <C-right> <ESC>:bn<CR>
 map <C-left> <ESC>:bp<CR>
 
-" Tab configuration
-map <leader>tn :tabnew %<cr>
-map <leader>te :tabedit
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-
 " When pressing <leader>cd switch to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>
-
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
-
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
-
-   if bufnr("%") == l:currentBufNum
-     new
-   endif
-
-   if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
-   endif
-endfunction
 
 " Specify the behavior when switching between buffers
 try
@@ -231,7 +202,7 @@ set laststatus=2
 set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
 
 function! CurDir()
-    let curdir = substitute(getcwd(), '/Users/amir/', "~/", "g")
+    let curdir = substitute(getcwd(), '/home/ace/', "~/", "g")
     return curdir
 endfunction
 
@@ -288,7 +259,7 @@ autocmd BufWrite *.py :call DeleteTrailingWS()
 " Do :help cope if you are unsure what cope is. It's super useful!
 map <leader>cc :botright cope<cr>
 map <leader>n :cn<cr>
-map <leader>p :cp<cr>
+map <leader>N :cp<cr>
 
 
 """"""""""""""""""""""""""""""
@@ -328,14 +299,6 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 "Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
 
-"Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
-
-
-
 """"""""""""""""""""""""""""""
 " => JavaScript section
 """""""""""""""""""""""""""""""
@@ -360,24 +323,11 @@ function! JavaScriptFold()
     setl foldtext=FoldText()
 endfunction
 
-
-""""""""""""""""""""""""""""""
-" => Fuzzy finder
-""""""""""""""""""""""""""""""
-try
-    call fuf#defineLaunchCommand('FufCWD', 'file', 'fnamemodify(getcwd(), ''%:p:h'')')
-    map <leader>t :FufCWD **/<CR>
-catch
-endtry
-
-map <C-t> <ESC>:FuzzyFinderTextMate<CR>
-
 """"""""""""""""""""""""""""""
 " => Vim grep
 """"""""""""""""""""""""""""""
 let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated .git'
 set grepprg=/bin/grep\ -nH
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => MISC
@@ -390,6 +340,7 @@ map <leader>q :e ~/buffer<cr>
 
 " Quickly show/hide NerdTree
 map <leader>p :NERDTreeToggle<CR>
+map <leader>P :TMiniBufExplorer<CR>
 
 " Souligne la ligne en cours avec des signes '='
 nnoremap <leader>1 yypVr=
@@ -436,9 +387,6 @@ nnoremap <leader>ft Vatzf
 " Trie les proprietes CSS avec ,S
 nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
 
-"This next mapping imitates TextMates Ctrl+Q function to re-hardwrap paragraphs of text:
-nnoremap <leader>q gqip
-
 "I have a ,v mapping to reselect the text that was just pasted so I can perform commands (like indentation) on it:
 nnoremap <leader>v V`]
 
@@ -447,4 +395,56 @@ inoremap jj <ESC>
 
 " Pour gundo plugin
 nnoremap <F5> :GundoToggle<CR>
+
+let g:EasyMotion_do_mapping=0
+let g:EasyMotion_do_shade = 1
+" char to the right
+nnoremap <silent> <Leader>gf       :call EasyMotionF(0, 0)<CR>
+onoremap <silent> <Leader>gf       :call EasyMotionF(0, 0)<CR>
+vnoremap <silent> <Leader>gf  :<C-U>call EasyMotionF(1, 0)<CR>
+
+" char to the left
+nnoremap <silent> <Leader>gF       :call EasyMotionF(0, 1)<CR>
+onoremap <silent> <Leader>gF       :call EasyMotionF(0, 1)<CR>
+vnoremap <silent> <Leader>gF  :<C-U>call EasyMotionF(1, 1)<CR>
+
+" Till before char to the right
+nnoremap <silent> <Leader>gt       :call EasyMotionT(0, 0)<CR>
+onoremap <silent> <Leader>gt       :call EasyMotionT(0, 0)<CR>
+vnoremap <silent> <Leader>gt  :<C-U>call EasyMotionT(1, 0)<CR>
+
+" Till after char to the left
+nnoremap <silent> <Leader>gT       :call EasyMotionT(0, 1)<CR>
+onoremap <silent> <Leader>gT       :call EasyMotionT(0, 1)<CR>
+vnoremap <silent> <Leader>gT  :<C-U>call EasyMotionT(1, 1)<CR>
+
+" beginning of word forward
+nnoremap <silent> <Leader>gw       :call EasyMotionWB(0, 0)<CR>
+onoremap <silent> <Leader>gw       :call EasyMotionWB(0, 0)<CR>
+vnoremap <silent> <Leader>gw  :<C-U>call EasyMotionWB(1, 0)<CR>
+
+" Beginning of word backward
+nnoremap <silent> <Leader>gb       :call EasyMotionWB(0, 1)<CR>
+onoremap <silent> <Leader>gb       :call EasyMotionWB(0, 1)<CR>
+vnoremap <silent> <Leader>gb  :<C-U>call EasyMotionWB(1, 1)<CR>
+
+" End of word forward
+nnoremap <silent> <Leader>ge       :call EasyMotionE(0, 0)<CR>
+onoremap <silent> <Leader>ge       :call EasyMotionE(0, 0)<CR>
+vnoremap <silent> <Leader>ge  :<C-U>call EasyMotionE(1, 0)<CR>
+
+" Beginning of word forward
+nnoremap <silent> <Leader>gge      :call EasyMotionE(0, 1)<CR>
+onoremap <silent> <Leader>gge      :call EasyMotionE(0, 1)<CR>
+vnoremap <silent> <Leader>gge :<C-U>call EasyMotionE(1, 1)<CR>
+
+" Line downward
+nnoremap <silent> <Leader>gj       :call EasyMotionJK(0, 0)<CR>
+onoremap <silent> <Leader>gj       :call EasyMotionJK(0, 0)<CR>
+vnoremap <silent> <Leader>gj  :<C-U>call EasyMotionJK(1, 0)<CR>
+
+" Line upward
+nnoremap <silent> <Leader>gk       :call EasyMotionJK(0, 1)<CR>
+onoremap <silent> <Leader>gk       :call EasyMotionJK(0, 1)<CR>
+vnoremap <silent> <Leader>gk  :<C-U>call EasyMotionJK(1, 1)<CR>
 

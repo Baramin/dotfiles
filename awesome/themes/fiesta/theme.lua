@@ -4,7 +4,8 @@
 
 -- {{{ Main
 theme = {}
-theme.wallpaper_cmd = { "hsetroot -fill /home/ace/wallpapers/Carina-Nebula-Close-2.jpg" }
+--theme.wallpaper_cmd = { "hsetroot -fill /home/ace/wallpapers/Carina-Nebula-Close-2.jpg" }
+theme.wallpaper_cmd = { "xplanetFX --start" }
 
 -- }}}
 

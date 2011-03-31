@@ -64,7 +64,7 @@ shifty.config.tags = {
   ["2:www"]  = { position = 2,  spawn = "firefox",},
   ["6:gimp"] = { position = 6, exclusive = true, nopopup = true, spawn = "gimp", },
   ["4:gvim"]  = { position = 4, },
-  ["5:sys"]  = { position = 5, exclusive = true,  nopopup = true, },
+  ["5:eclipse"]  = { position = 5, exclusive = true,  nopopup = true, },
   ["7:msg"]  = { position = 7, exclusive = true,  nopopup = true,  },
   ["8:view"] = { position = 8, exclusive = true,  },
   ["9:vbox"] = { position = 9, exclusive = true, nopopup = true,  },
@@ -80,11 +80,11 @@ shifty.config.apps = {
   { match = {"Eterm", "Term -" }, tag = "1:term", opacity = 1.0 },
   { match = {"^Download$", "Preferences", "VideoDownloadHelper","Downloads", "Firefox Preferences", }, float = true, intrusive = true },
   { match = {"Firefox","Iceweasel","Vimperator","Shiretoko"} , tag = "2:www", opacity = 1.0       } ,
+  { match = {"Eclipse"} , tag = "5:eclipse", opacity = 1.0       } ,
   { match = {"Gimp"                           }, tag = "6:gimp",  float = true , opacity = 1.0    },
   { match = {"gimp-image-window"              }, slave = true,  opacity = 1.0                     },
   { match = {"MPlayer","ffplay","vlc"                       }, tag = "8:view", float = true,  opacity = 1.0             },
   { match = {"Pidgin"                         }, tag = "7:msg",                                   },
-  { match = {"htop"                           }, tag = "5:sys",                                   },
   { match = {"VirtualBox"                     }, tag = "9:vbox", float = true,  opacity = 1.0     },
   { match = {"lxappearence","Caml graphics"               }, float = true, opacity = 1.0                      },
   { match = {"evince", "gpicview","Epdfview", "f-spot"    }, float = true, tag = "8:view",                    },
@@ -530,6 +530,7 @@ autorunApps =
    "tint2",
    "gnome-do",
    "gnome-volume-control-applet",
+   "syndaemon -i 1 -d"
 }
 if autorun then
    for app = 1, #autorunApps do
