@@ -1,7 +1,7 @@
 *bundles.txt*                    Bundles                      Version 0.1
 
 These are the bundles installed on your system, along with their
-versions and release dates.  Downloaded on 2011-03-31 23:12:41 +0200.
+versions and release dates.  Downloaded on 2011-04-16 00:18:23 +0200.
 
 A version number of 'n/a' means upstream hasn't tagged any releases.
   - |ruby-debugger|                v0.1-28-g60b6f92       2011-02-05
@@ -9,11 +9,11 @@ A version number of 'n/a' means upstream hasn't tagged any releases.
   - |nerdtree|                     4.1.0-28-g1dd345c      2011-03-03
   - |textile|                      0.2-10-g8740757        2011-02-21
   - |cucumber|                     n/a                    2010-11-21
-  - |fugitive|                     v1.1-26-g119fd9e       2010-09-15
-  - |git|                          v5.0-4-gbda9f09        2010-02-14
-  - |haml|                         vim7.2-52-g47c4dff     2010-08-09
-  - |markdown|                     n/a                    2010-05-02
-  - |rails|                        v4.3-9-g5db62b2        2011-02-26
+  - |fugitive|                     v1.1-59-g3026076       2011-04-03
+  - |git|                          v5.0-6-gca001e5        2011-02-07
+  - |haml|                         vim7.2-54-ga0345d5     2010-11-08
+  - |markdown|                     n/a                    2010-10-24
+  - |rails|                        v4.3-13-g39a3fca       2011-04-15
   - |surround|                     v1.90-5-gd9e6bfd       2011-01-23
   - |repeat|                       v1.0                   2008-04-25
   - |ragtag|                       v2.0-6-ga6190de        2010-09-26
@@ -21,18 +21,18 @@ A version number of 'n/a' means upstream hasn't tagged any releases.
   - |align|                        n/a                    2010-04-01
   - |shoulda|                      n/a                    2010-04-01
   - |supertab|                     n/a                    2010-04-01
-  - |ruby|                         vim7.3-31-g699670a     2011-03-21
-  - |ack|                          n/a                    2010-07-29
-  - |nerdcommenter|                2.2.2-35-gc8d8318      2011-03-01
-  - |zencoding-vim|                n/a                    2011-02-24
-  - |gundo|                        v0.9.0-3-ga5395a1      2010-10-20
+  - |ruby|                         vim7.3-32-g07d0b51     2011-04-10
+  - |ack|                          n/a                    2010-09-22
+  - |nerdcommenter|                2.2.2-36-g38630ff      2011-04-02
+  - |zencoding-vim|                n/a                    2011-04-09
+  - |gundo|                        v2.1.1-2-ge7a1ecf      2011-03-13
   - |indent-guides|                1.5                    2011-03-13
-  - |jellybeans|                   v1.3-12-g61847cc       2011-02-06
+  - |jellybeans|                   v1.3-21-g0460099       2011-04-11
   - |minibufexpl|                  6.4.0-1-g308d6b1       2011-01-01
   - |bclose|                       n/a                    2011-02-21
-  - |easymotion|                   1.1.0.1                2011-03-31
+  - |easymotion|                   1.2-1-gcdecdc5         2011-04-07
   - |vibrantink|                   1.3                    2009-03-05
   - |mru|                          n/a                    2010-05-27
   - |jQuery|                       0.4                    2010-02-02
-  - |Command-T|                    0.8.1                  2010-09-14
+  - |Command-T|                    1.1b2                  2011-03-27
 
