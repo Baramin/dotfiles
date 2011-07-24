@@ -1,48 +1,18 @@
-  " BUNDLE: git://github.com/astashov/vim-ruby-debugger.git
-  " BUNDLE: git://github.com/msanders/snipmate.vim.git
-  " BUNDLE: git://github.com/scrooloose/nerdtree.git
-  " BUNDLE: git://github.com/timcharper/textile.vim.git
-  " BUNDLE: git://github.com/tpope/vim-cucumber.git
-  " BUNDLE: git://github.com/tpope/vim-fugitive.git
-  " BUNDLE: git://github.com/tpope/vim-git.git
-  " BUNDLE: git://github.com/tpope/vim-haml.git
-  " BUNDLE: git://github.com/tpope/vim-markdown.git
-  " BUNDLE: git://github.com/tpope/vim-rails.git
-  " BUNDLE: git://github.com/tpope/vim-surround.git
-  " BUNDLE: git://github.com/tpope/vim-repeat.git
-  " BUNDLE: git://github.com/tpope/vim-ragtag.git
-  " BUNDLE: git://github.com/tpope/vim-vividchalk.git
-  " BUNDLE: git://github.com/tsaleh/vim-align.git
-  " BUNDLE: git://github.com/tsaleh/vim-shoulda.git
-  " BUNDLE: git://github.com/tsaleh/vim-supertab.git
-  " BUNDLE: git://github.com/vim-ruby/vim-ruby.git
-  " BUNDLE: git://github.com/mileszs/ack.vim.git
-  " BUNDLE: git://github.com/scrooloose/nerdcommenter.git
-  " BUNDLE: git://github.com/mattn/zencoding-vim.git
-  " BUNDLE: git://github.com/sjl/gundo.vim.git
-  " BUNDLE: git://github.com/nathanaelkane/vim-indent-guides.git
-  " BUNDLE: git://github.com/nanotech/jellybeans.vim.git
-  " BUNDLE: git://github.com/fholgado/minibufexpl.vim.git
-  " BUNDLE: git://github.com/cespare/vim-bclose.git
-  " BUNDLE: git://github.com/Lokaltog/vim-easymotion.git
-  "
-  " BUNDLE: git://github.com/vim-scripts/vibrantink.git
-  " BONDLE: git://github.com/vim-scripts/MRU.git
-  " BUNDLE: git://github.com/ornicar/vim-mru.git
-  " BUNDLE: git://github.com/vim-scripts/jQuery.git
-  " BUNDLE: git://github.com/vim-scripts/Command-T.git
-  "
-  "
 
+fun! MySys()
+  if has("win32")
+    return "windows"
+  else
+    return "unix"
+  endif
+endfun
+
+source $HOME/.vim/vimrc-vundle
+
+filetype plugin indent on
+"
 " Sets how many lines of history VIM has to remember
 set history=300
-
-filetype off
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
-filetype plugin indent on
-
-set nocompatible
 
 set modelines=0
 
@@ -58,6 +28,7 @@ map <leader>E :e! ~/.vimrc<cr>
 
 " When vimrc is edited, reload it
 autocmd! bufwritepost .vimrc source ~/.vimrc
+autocmd! bufwritepost _vimrc source ~/_vimrc
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -396,55 +367,56 @@ inoremap jj <ESC>
 " Pour gundo plugin
 nnoremap <F5> :GundoToggle<CR>
 
-let g:EasyMotion_do_mapping=0
-let g:EasyMotion_do_shade = 1
-" char to the right
-nnoremap <silent> <Leader>gf       :call EasyMotionF(0, 0)<CR>
-onoremap <silent> <Leader>gf       :call EasyMotionF(0, 0)<CR>
-vnoremap <silent> <Leader>gf  :<C-U>call EasyMotionF(1, 0)<CR>
+let g:EasyMotion_leader_key = '<Leader>m'
+"let g:EasyMotion_do_mapping=0
+"let g:EasyMotion_do_shade = 1
+"" char to the right
+"nnoremap <silent> <Leader>gf       :call EasyMotionF(0, 0)<CR>
+"onoremap <silent> <Leader>gf       :call EasyMotionF(0, 0)<CR>
+"vnoremap <silent> <Leader>gf  :<C-U>call EasyMotionF(1, 0)<CR>
 
-" char to the left
-nnoremap <silent> <Leader>gF       :call EasyMotionF(0, 1)<CR>
-onoremap <silent> <Leader>gF       :call EasyMotionF(0, 1)<CR>
-vnoremap <silent> <Leader>gF  :<C-U>call EasyMotionF(1, 1)<CR>
+"" char to the left
+"nnoremap <silent> <Leader>gF       :call EasyMotionF(0, 1)<CR>
+"onoremap <silent> <Leader>gF       :call EasyMotionF(0, 1)<CR>
+"vnoremap <silent> <Leader>gF  :<C-U>call EasyMotionF(1, 1)<CR>
 
-" Till before char to the right
-nnoremap <silent> <Leader>gt       :call EasyMotionT(0, 0)<CR>
-onoremap <silent> <Leader>gt       :call EasyMotionT(0, 0)<CR>
-vnoremap <silent> <Leader>gt  :<C-U>call EasyMotionT(1, 0)<CR>
+"" Till before char to the right
+"nnoremap <silent> <Leader>gt       :call EasyMotionT(0, 0)<CR>
+"onoremap <silent> <Leader>gt       :call EasyMotionT(0, 0)<CR>
+"vnoremap <silent> <Leader>gt  :<C-U>call EasyMotionT(1, 0)<CR>
 
-" Till after char to the left
-nnoremap <silent> <Leader>gT       :call EasyMotionT(0, 1)<CR>
-onoremap <silent> <Leader>gT       :call EasyMotionT(0, 1)<CR>
-vnoremap <silent> <Leader>gT  :<C-U>call EasyMotionT(1, 1)<CR>
+"" Till after char to the left
+"nnoremap <silent> <Leader>gT       :call EasyMotionT(0, 1)<CR>
+"onoremap <silent> <Leader>gT       :call EasyMotionT(0, 1)<CR>
+"vnoremap <silent> <Leader>gT  :<C-U>call EasyMotionT(1, 1)<CR>
 
-" beginning of word forward
-nnoremap <silent> <Leader>gw       :call EasyMotionWB(0, 0)<CR>
-onoremap <silent> <Leader>gw       :call EasyMotionWB(0, 0)<CR>
-vnoremap <silent> <Leader>gw  :<C-U>call EasyMotionWB(1, 0)<CR>
+"" beginning of word forward
+"nnoremap <silent> <Leader>gw       :call EasyMotionWB(0, 0)<CR>
+"onoremap <silent> <Leader>gw       :call EasyMotionWB(0, 0)<CR>
+"vnoremap <silent> <Leader>gw  :<C-U>call EasyMotionWB(1, 0)<CR>
 
-" Beginning of word backward
-nnoremap <silent> <Leader>gb       :call EasyMotionWB(0, 1)<CR>
-onoremap <silent> <Leader>gb       :call EasyMotionWB(0, 1)<CR>
-vnoremap <silent> <Leader>gb  :<C-U>call EasyMotionWB(1, 1)<CR>
+"" Beginning of word backward
+"nnoremap <silent> <Leader>gb       :call EasyMotionWB(0, 1)<CR>
+"onoremap <silent> <Leader>gb       :call EasyMotionWB(0, 1)<CR>
+"vnoremap <silent> <Leader>gb  :<C-U>call EasyMotionWB(1, 1)<CR>
 
-" End of word forward
-nnoremap <silent> <Leader>ge       :call EasyMotionE(0, 0)<CR>
-onoremap <silent> <Leader>ge       :call EasyMotionE(0, 0)<CR>
-vnoremap <silent> <Leader>ge  :<C-U>call EasyMotionE(1, 0)<CR>
+"" End of word forward
+"nnoremap <silent> <Leader>ge       :call EasyMotionE(0, 0)<CR>
+"onoremap <silent> <Leader>ge       :call EasyMotionE(0, 0)<CR>
+"vnoremap <silent> <Leader>ge  :<C-U>call EasyMotionE(1, 0)<CR>
 
-" Beginning of word forward
-nnoremap <silent> <Leader>gge      :call EasyMotionE(0, 1)<CR>
-onoremap <silent> <Leader>gge      :call EasyMotionE(0, 1)<CR>
-vnoremap <silent> <Leader>gge :<C-U>call EasyMotionE(1, 1)<CR>
+"" Beginning of word forward
+"nnoremap <silent> <Leader>gge      :call EasyMotionE(0, 1)<CR>
+"onoremap <silent> <Leader>gge      :call EasyMotionE(0, 1)<CR>
+"vnoremap <silent> <Leader>gge :<C-U>call EasyMotionE(1, 1)<CR>
 
-" Line downward
-nnoremap <silent> <Leader>gj       :call EasyMotionJK(0, 0)<CR>
-onoremap <silent> <Leader>gj       :call EasyMotionJK(0, 0)<CR>
-vnoremap <silent> <Leader>gj  :<C-U>call EasyMotionJK(1, 0)<CR>
+"" Line downward
+"nnoremap <silent> <Leader>gj       :call EasyMotionJK(0, 0)<CR>
+"onoremap <silent> <Leader>gj       :call EasyMotionJK(0, 0)<CR>
+"vnoremap <silent> <Leader>gj  :<C-U>call EasyMotionJK(1, 0)<CR>
 
-" Line upward
-nnoremap <silent> <Leader>gk       :call EasyMotionJK(0, 1)<CR>
-onoremap <silent> <Leader>gk       :call EasyMotionJK(0, 1)<CR>
-vnoremap <silent> <Leader>gk  :<C-U>call EasyMotionJK(1, 1)<CR>
+"" Line upward
+"nnoremap <silent> <Leader>gk       :call EasyMotionJK(0, 1)<CR>
+"onoremap <silent> <Leader>gk       :call EasyMotionJK(0, 1)<CR>
+"vnoremap <silent> <Leader>gk  :<C-U>call EasyMotionJK(1, 1)<CR>
 

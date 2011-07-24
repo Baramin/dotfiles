@@ -107,5 +107,7 @@ if [[ -s /home/ace/.rvm/scripts/rvm ]]; then
   source /home/ace/.rvm/scripts/rvm
 fi
 
-rvm gemset use tootfit
+if [[ -f $HOME/.bashrc.local ]]; then
+  source $HOME/.bashrc.local 
+fi
 
