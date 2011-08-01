@@ -30,6 +30,11 @@ map <leader>E :e! ~/.vimrc<cr>
 autocmd! bufwritepost .vimrc source ~/.vimrc
 autocmd! bufwritepost _vimrc source ~/_vimrc
 
+if has("gui")
+  set guioptions-=m
+  set guioptions-=T
+endif
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -53,6 +58,7 @@ set showmode
 set showcmd
 set wildmenu
 set wildmode=list:longest
+set t_Co=256
 colorscheme vividchalk
 
 
@@ -349,54 +355,7 @@ nnoremap <F5> :GundoToggle<CR>
 
 let g:EasyMotion_leader_key = '<Leader>m'
 "let g:EasyMotion_do_mapping=0
-"let g:EasyMotion_do_shade = 1
-"" char to the right
-"nnoremap <silent> <Leader>gf       :call EasyMotionF(0, 0)<CR>
-"onoremap <silent> <Leader>gf       :call EasyMotionF(0, 0)<CR>
-"vnoremap <silent> <Leader>gf  :<C-U>call EasyMotionF(1, 0)<CR>
+let g:EasyMotion_do_shade = 1
 
-"" char to the left
-"nnoremap <silent> <Leader>gF       :call EasyMotionF(0, 1)<CR>
-"onoremap <silent> <Leader>gF       :call EasyMotionF(0, 1)<CR>
-"vnoremap <silent> <Leader>gF  :<C-U>call EasyMotionF(1, 1)<CR>
-
-"" Till before char to the right
-"nnoremap <silent> <Leader>gt       :call EasyMotionT(0, 0)<CR>
-"onoremap <silent> <Leader>gt       :call EasyMotionT(0, 0)<CR>
-"vnoremap <silent> <Leader>gt  :<C-U>call EasyMotionT(1, 0)<CR>
-
-"" Till after char to the left
-"nnoremap <silent> <Leader>gT       :call EasyMotionT(0, 1)<CR>
-"onoremap <silent> <Leader>gT       :call EasyMotionT(0, 1)<CR>
-"vnoremap <silent> <Leader>gT  :<C-U>call EasyMotionT(1, 1)<CR>
-
-"" beginning of word forward
-"nnoremap <silent> <Leader>gw       :call EasyMotionWB(0, 0)<CR>
-"onoremap <silent> <Leader>gw       :call EasyMotionWB(0, 0)<CR>
-"vnoremap <silent> <Leader>gw  :<C-U>call EasyMotionWB(1, 0)<CR>
-
-"" Beginning of word backward
-"nnoremap <silent> <Leader>gb       :call EasyMotionWB(0, 1)<CR>
-"onoremap <silent> <Leader>gb       :call EasyMotionWB(0, 1)<CR>
-"vnoremap <silent> <Leader>gb  :<C-U>call EasyMotionWB(1, 1)<CR>
-
-"" End of word forward
-"nnoremap <silent> <Leader>ge       :call EasyMotionE(0, 0)<CR>
-"onoremap <silent> <Leader>ge       :call EasyMotionE(0, 0)<CR>
-"vnoremap <silent> <Leader>ge  :<C-U>call EasyMotionE(1, 0)<CR>
-
-"" Beginning of word forward
-"nnoremap <silent> <Leader>gge      :call EasyMotionE(0, 1)<CR>
-"onoremap <silent> <Leader>gge      :call EasyMotionE(0, 1)<CR>
-"vnoremap <silent> <Leader>gge :<C-U>call EasyMotionE(1, 1)<CR>
-
-"" Line downward
-"nnoremap <silent> <Leader>gj       :call EasyMotionJK(0, 0)<CR>
-"onoremap <silent> <Leader>gj       :call EasyMotionJK(0, 0)<CR>
-"vnoremap <silent> <Leader>gj  :<C-U>call EasyMotionJK(1, 0)<CR>
-
-"" Line upward
-"nnoremap <silent> <Leader>gk       :call EasyMotionJK(0, 1)<CR>
-"onoremap <silent> <Leader>gk       :call EasyMotionJK(0, 1)<CR>
-"vnoremap <silent> <Leader>gk  :<C-U>call EasyMotionJK(1, 1)<CR>
-
+" Permet de renseigner le répertoire du fichier courant dans la ligne de commande
+cnoremap %% <C-R>=expand('%:h').'/'<cr>

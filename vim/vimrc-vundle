@@ -33,8 +33,11 @@ Bundle "nanotech/jellybeans.vim.git"
 Bundle "Lokaltog/vim-easymotion.git"
 Bundle "vim-scripts/vibrantink.git"
 Bundle "vim-scripts/jQuery.git"
-Bundle "vim-scripts/Command-T.git"
+if has('ruby')
+  Bundle "vim-scripts/Command-T.git"
+endif
 Bundle "mru.vim"
+Bundle "scratch"
 "
 "
 
