@@ -33,6 +33,7 @@ autocmd! bufwritepost _vimrc source ~/_vimrc
 if has("gui")
   set guioptions-=m
   set guioptions-=T
+  set guioptions-=e
 endif
 
 
