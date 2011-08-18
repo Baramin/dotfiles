@@ -60,7 +60,7 @@ layouts =
 shifty.config.tags = {
   --  ["foo"] = { position = 13, init = true, },
   ["1:term"] = { position = 1, init = true, },
-  ["3:dev"] = { position = 3, spawn = "/home/ace/bin/rundev.sh" },
+  --["3:dev"] = { position = 3, spawn = "/home/ace/bin/rundev.sh" },
   ["2:www"]  = { position = 2,  spawn = "firefox",},
   ["6:gimp"] = { position = 6, exclusive = true, nopopup = true, spawn = "gimp", },
   ["4:gvim"]  = { position = 4, },
@@ -76,8 +76,8 @@ shifty.taglist = mytaglist
 shifty.config.apps = {
 
   { match = {"Gvim"                                       }, tag = "4:gvim", opacity = 1.0 },
-  { match = {"dev -" }, tag = "3:dev", opacity = 1.0 },
-  { match = {"Eterm", "Term -" }, tag = "1:term", opacity = 1.0 },
+  --{ match = {"dev -" }, tag = "3:dev", opacity = 1.0 },
+  { match = {"Eterm", "Term -", "terminal" }, tag = "1:term", opacity = 1.0 },
   { match = {"^Download$", "Preferences", "VideoDownloadHelper","Downloads", "Firefox Preferences", }, float = true, intrusive = true },
   { match = {"Firefox","Iceweasel","Vimperator","Shiretoko"} , tag = "2:www", opacity = 1.0       } ,
   { match = {"Eclipse"} , tag = "5:eclipse", opacity = 1.0       } ,
@@ -119,7 +119,7 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
     --                                { "Debian", debian.menu.Debian_menu.Debian },
-    { "Dev windows", function () awesome.spawn("/home/ace/bin/rundev.sh"); end },
+    --{ "Dev windows", function () awesome.spawn("/home/ace/bin/rundev.sh"); end },
     { "open terminal", terminal }
                                   }
                         })
