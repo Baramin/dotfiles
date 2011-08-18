@@ -339,9 +339,6 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " acces rapide a Ack avec ,a
 nnoremap <leader>a :Ack
 
-" pour HTML : fold tag sur ,ft
-nnoremap <leader>ft Vatzf
-
 " Trie les proprietes CSS avec ,S
 nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
 
@@ -360,3 +357,33 @@ let g:EasyMotion_do_shade = 1
 
 " Permet de renseigner le répertoire du fichier courant dans la ligne de commande
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
+" cree un fold autour d'un tag avec ,f
+au FileType html setlocal foldmethod=manual
+au FileType html nnoremap <leader>f Vatzf
+au FileType xhtml setlocal foldmethod=manual
+au FileType xhtml nnoremap <leader>f Vatzf
+
+" deplace la fin de la ligne depuis le curseur au debut de la ligne suivante
+nnoremap K h/[^ ]<cr>"zd$jyyP^v$h"zpJk:s/\v +$//<cr>:noh<cr>j^
+
+" Make horizontal scrolling less horrible.
+set sidescroll=1
+set sidescrolloff=10
+
+" ouvre l'aide a droite et non au dessus
+au FileType help wincmd L
+
+" remplace la selection avec le resultat du calcul
+" ex: 1+3+5, select le tout et (g=) => 9
+vnoremap g= "xc<C-r>=<C-r>x<CR><ESC>
+" en insertion (calcule depuis le dernier espace ou début de ligne) :
+inoremap <C-B> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
+
+" ajoute un objet "In next (" :
+" s'utilise ainsi :
+" din( : delete in next ()
+" vin( : select in next ()
+" cin( : change in next ()
+vnoremap <silent> in( :<C-U>normal! f(vi(<cr>
+onoremap <silent> in( :<C-U>normal! f(vi(<cr>
