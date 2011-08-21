@@ -386,3 +386,36 @@ onoremap <silent> in( :<C-U>normal! f(vi(<cr>
 nnoremap <silent> <leader>tt :CommandT<CR>
 nnoremap <silent> <leader>TT :CommandTFlush<CR>
 nnoremap <silent> <leader>tb :CommandTBuffer<CR>
+
+" from Miek article about Go from Vim
+" folding settings
+" zM close all folds
+" zR open all folds
+" za toggle fold under cursor
+" zA toggle fold under cursor recursively
+" zo open fold under cursor
+" zO open fold under cursor recursively
+" zc close fold under cursor
+" zC close fold under cursor recursively
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=0
+
+" toggle swiches
+set pastetoggle=<F7>
+
+" search hilight
+map     <F8>   :nohlsearch<CR>
+imap    <F8>   <ESC>:nohlsearch<CR>a
+vmap    <F8>   <ESC>:nohlsearch<CR>gv
+
+" numbering
+map     <F10>   :set nu!<CR>
+imap    <F10>   <ESC>:set nu!<CR>i
+vmap    <F10>   <ESC>:set nu!<CR>gv
+
+" toggle cursorline
+map     <F9>   :set cursorline!<CR>
+imap    <F9>   <ESC>:set cursorline!<CR>
+
