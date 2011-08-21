@@ -240,11 +240,6 @@ let g:miniBufExplSplitBelow=1
 
 let g:bufExplorerSortBy = "name"
 
-autocmd BufRead,BufNew :call UMiniBufExplorer
-
-map <leader>u :TMiniBufExplorer<cr>:TMiniBufExplorer<cr>
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Omni complete functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -298,10 +293,9 @@ map <leader>q :e ~/buffer<cr>
 
 " Quickly show/hide NerdTree
 map <leader>p :NERDTreeToggle<CR>
-map <leader>P :TMiniBufExplorer<CR>
 
 " Souligne la ligne en cours avec des signes '='
-nnoremap <leader>1 yypVr=
+nnoremap <leader>= yypVr=
 
 " dompte les recherches
 " mode escape perl par defaut
@@ -329,8 +323,8 @@ vnoremap <F1> <ESC>
 
 
 set list
-set listchars=tab:▸\ ,eol:¬
-
+"set listchars=tab:▸\ ,eol:¬
+set listchars=tab:▸\ 
 
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
@@ -387,3 +381,8 @@ inoremap <C-B> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
 " cin( : change in next ()
 vnoremap <silent> in( :<C-U>normal! f(vi(<cr>
 onoremap <silent> in( :<C-U>normal! f(vi(<cr>
+
+" Command-T accessible via ,tt ,TT (flush) et ,TB (buffers ouverts)
+nnoremap <silent> <leader>tt :CommandT<CR>
+nnoremap <silent> <leader>TT :CommandTFlush<CR>
+nnoremap <silent> <leader>tb :CommandTBuffer<CR>
