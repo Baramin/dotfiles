@@ -1,6 +1,8 @@
 set nocompatible
 filetype off
 
+" Install vundle with git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
 set rtp+=$HOME/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -38,6 +40,7 @@ if has('ruby')
 endif
 Bundle "mru.vim"
 Bundle "scratch"
-"
-"
+Bundle "wombat256.vim"
+Bundle "altercation/vim-colors-solarized.git"
+Bundle "Zenburn"
 
