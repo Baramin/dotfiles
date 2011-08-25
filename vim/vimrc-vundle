@@ -15,8 +15,8 @@ Bundle 'gmarik/vundle'
 
 Bundle "MarcWeber/vim-addon-mw-utils.git"
 Bundle "tomtom/tlib_vim.git"
-Bundle "honza/snipmate-snippets.git"
 Bundle "ornicar/snipmate.vim.git"
+Bundle "honza/snipmate-snippets.git"
 Bundle "scrooloose/nerdtree.git"
 Bundle "tpope/vim-cucumber.git"
 Bundle "tpope/vim-git.git"
@@ -48,4 +48,8 @@ Bundle "scratch"
 Bundle "wombat256.vim"
 Bundle "altercation/vim-colors-solarized.git"
 Bundle "Zenburn"
+" Ctrl-E pour expand : e.g. div > ul > li * 4 <C-E>
+Bundle "bingaman/vim-sparkup"
+Bundle "tsaleh/vim-matchit"
+Bundle 'delimitMate.vim'
 

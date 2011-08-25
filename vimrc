@@ -73,7 +73,7 @@ set wildmode=list:longest
 if has("gui_running")
   colorscheme solarized
 else
-  colorscheme zenburn
+  colorscheme vividchalk
 end
 
 
@@ -401,7 +401,7 @@ onoremap <silent> in( :<C-U>normal! f(vi(<cr>
 
 " Command-T accessible via ,tt ,TT (flush) et ,TB (buffers ouverts)
 nnoremap <silent> <leader>tt :CommandT<CR>
-nnoremap <silent> <leader>TT :CommandTFlush<CR>
+nnoremap <silent> <leader>tT :CommandTFlush<CR>
 nnoremap <silent> <leader>tb :CommandTBuffer<CR>
 
 " from Miek article about Go from Vim
