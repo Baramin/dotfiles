@@ -7,7 +7,15 @@ fun! MySys()
   endif
 endfun
 
-source $HOME/.vim/vimrc-vundle
+if MySys() == "unix"
+  set shell=/bin/bash
+end
+
+if MySys() == "windows"
+  source $HOME/vimfiles/vimrc-vundle
+else
+  source $HOME/.vim/vimrc-vundle
+end
 
 filetype plugin indent on
 "
@@ -24,16 +32,16 @@ set autoread
 let mapleader = ","
 
 " Fast editing of the .vimrc
-map <leader>E :e! ~/.vimrc<cr>
+map <leader>E :e! $MYVIMRC<cr>
 
 " When vimrc is edited, reload it
-autocmd! bufwritepost .vimrc source ~/.vimrc
-autocmd! bufwritepost _vimrc source ~/_vimrc
+autocmd! bufwritepost $MYVIMRC source $MYVIMRC
 
 if has("gui")
   set guioptions-=m
   set guioptions-=T
   set guioptions-=e
+  set guioptions-=L
 endif
 
 
@@ -62,8 +70,11 @@ set wildmode=list:longest
 "set background=dark
 "set t_Co=256
 "let g:solarized_termcolors=256
-"colorscheme solarized
-colorscheme zenburn
+if has("gui_running")
+  colorscheme solarized
+else
+  colorscheme zenburn
+end
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -71,8 +82,11 @@ colorscheme zenburn
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable "Enable syntax hl
 
-set gfn=Monaco\ 10
-set shell=/bin/bash
+if MySys() == "unix"
+  set gfn=Monaco\ 10
+else
+  set gfn=Monaco:h10:cANSI
+end
 
 set encoding=utf8
 try

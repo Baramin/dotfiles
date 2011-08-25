@@ -3,8 +3,13 @@ filetype off
 
 " Install vundle with git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
-set rtp+=$HOME/.vim/bundle/vundle/
-call vundle#rc()
+if MySys() == "windows"
+  set rtp+=$HOME/vimfiles/bundle/vundle/
+  call vundle#rc('$HOME/vimfiles/bundle/')
+else
+  set rtp+=$HOME/.vim/bundle/vundle/
+  call vundle#rc()
+end
 
 Bundle 'gmarik/vundle'
 
