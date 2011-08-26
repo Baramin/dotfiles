@@ -452,7 +452,8 @@ vnoremap < <gv
 vnoremap > >gv
 
 " test pour supertab
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+"let g:SuperTabDefaultCompletionType = "context"
+"let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 
+silent! imap <unique> <buffer> <S-Space> <Plug>delimitMateS-Tab
 

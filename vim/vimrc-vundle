@@ -54,4 +54,5 @@ Bundle "tsaleh/vim-matchit"
 Bundle 'delimitMate.vim'
 " <leader>ce pour color editor
 Bundle 'ColorV'
+Bundle 'perl-support.vim'
 
