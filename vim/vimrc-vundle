@@ -52,4 +52,6 @@ Bundle "Zenburn"
 Bundle "bingaman/vim-sparkup"
 Bundle "tsaleh/vim-matchit"
 Bundle 'delimitMate.vim'
+" <leader>ce pour color editor
+Bundle 'ColorV'
 
