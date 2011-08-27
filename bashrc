@@ -102,6 +102,7 @@ source ~/.bash/aliases
 source ~/.bash/completions
 source ~/.bash/paths
 source ~/.bash/config
+source ~/.bash/dir.sh
 
 if [[ -s /home/ace/.rvm/scripts/rvm ]]; then
   source /home/ace/.rvm/scripts/rvm
@@ -110,4 +111,6 @@ fi
 if [[ -f $HOME/.bashrc.local ]]; then
   source $HOME/.bashrc.local 
 fi
+
+
 
