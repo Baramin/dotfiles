@@ -1,0 +1,19 @@
+"1.0b3 (created: 2010/11/06 12:31:35)
+
+set runtimepath='C:\Users\AcE\pentadactyl'
+loadplugins '\.(js|penta)$'
+group user
+set editor='C:\\Program\ Files\\Vim\\vim73\\gvim.exe -f +<line> <file>'
+set passkeys='google\.(fr|com)/reader':jkvnpbumoAXNOVPJK?ehsl<Return>
+
+
+map -m hints j     -ex normal! j
+map -m hints k     -ex normal! k
+map -m hints <C-f> -ex normal! <C-f>
+map -m hints <C-b> -ex normal! <C-b>
+map -m hints gg    -ex normal! gg
+map -m hints G     -ex normal! G
+
+com tabrename -nargs=1 -literal=0 -js content.document.title = args[0];
+
+" vim: set ft=pentadactyl:
