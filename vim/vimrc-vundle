@@ -46,7 +46,6 @@ endif
 Bundle "mru.vim"
 Bundle "scratch"
 Bundle "wombat256.vim"
-Bundle "altercation/vim-colors-solarized.git"
 Bundle "Zenburn"
 " Ctrl-E pour expand : e.g. div > ul > li * 4 <C-E>
 Bundle "bingaman/vim-sparkup"
@@ -55,4 +54,5 @@ Bundle 'delimitMate.vim'
 " <leader>ce pour color editor
 Bundle 'ColorV'
 Bundle 'perl-support.vim'
+Bundle 'Rename'
 
