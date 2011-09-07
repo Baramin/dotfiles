@@ -63,7 +63,7 @@ shifty.config.tags = {
   --["3:dev"] = { position = 3, spawn = "/home/ace/bin/rundev.sh" },
   ["2:www"]  = { position = 2,  spawn = "firefox",},
   ["6:gimp"] = { position = 6, exclusive = true, nopopup = true, spawn = "gimp", },
-  ["4:gvim"]  = { position = 4, },
+  --["4:gvim"]  = { position = 4, },
   ["5:eclipse"]  = { position = 5, exclusive = true,  nopopup = true, },
   ["7:msg"]  = { position = 7, exclusive = true,  nopopup = true,  },
   ["8:view"] = { position = 8, exclusive = true,  },
@@ -75,7 +75,7 @@ shifty.taglist = mytaglist
 
 shifty.config.apps = {
 
-  { match = {"Gvim"                                       }, tag = "4:gvim", opacity = 1.0 },
+  --{ match = {"Gvim"                                       }, tag = "4:gvim", opacity = 1.0 },
   --{ match = {"dev -" }, tag = "3:dev", opacity = 1.0 },
   { match = {"Eterm", "Term -", "terminal" }, tag = "1:term", opacity = 1.0 },
   { match = {"^Download$", "Preferences", "VideoDownloadHelper","Downloads", "Firefox Preferences", }, float = true, intrusive = true },
