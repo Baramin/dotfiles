@@ -113,4 +113,6 @@ if [[ -f $HOME/.bashrc.local ]]; then
 fi
 
 
+export AUTOFEATURE=true
+
 
