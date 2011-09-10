@@ -1,7 +1,14 @@
 . ~/.bash/zsh.aliases
 
 # changing directory to code project
-function c { cd ~/code/$1; }
+function c { 
+  if [[ $( type -t cd_ ) == "function" ]]
+  then
+    cd_ ~/code/$1
+  else
+    cd ~/code/$1
+  fi
+}
 
 # alternative to "rails" command to use templates
 function railsapp {
