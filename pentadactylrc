@@ -4,7 +4,7 @@ set runtimepath='/home/ace/pentadactyl'
 loadplugins '\.(js|penta)$'
 group user
 set editor='gvim -f +<line> <file>'
-set passkeys='google\.(fr|com)/reader':jkvnpbumoAXNOVPJK?ehsl<Return>
+set passkeys='google\.(fr|com)/reader':jkvnpbumAXNVPJK?ehsl<Return>
 
 
 map -m hints j     -ex normal! j
