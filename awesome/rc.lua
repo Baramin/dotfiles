@@ -5,7 +5,6 @@ require("awful.rules")
 require("beautiful")
 -- Notification library
 require("naughty")
---require("vicious")
 -- Load Debian menu entries
 --require("debian.menu")
 -- Custom libraries
@@ -62,10 +61,10 @@ shifty.config.tags = {
   ["1:term"] = { position = 1, init = true, },
   --["3:dev"] = { position = 3, spawn = "/home/ace/bin/rundev.sh" },
   ["2:www"]  = { position = 2,  spawn = "firefox",},
-  ["6:gimp"] = { position = 6, exclusive = true, nopopup = true, spawn = "gimp", },
-  --["4:gvim"]  = { position = 4, },
+  ["3:gvim"]  = { position = 4, },
   ["5:eclipse"]  = { position = 5, exclusive = true,  nopopup = true, },
-  ["7:msg"]  = { position = 7, exclusive = true,  nopopup = true,  },
+  ["6:gimp"] = { position = 6, exclusive = true, nopopup = true, spawn = "gimp", },
+  ["7:office"]  = { position = 7, exclusive = true, },
   ["8:view"] = { position = 8, exclusive = true,  },
   ["9:vbox"] = { position = 9, exclusive = true, nopopup = true,  },
 }
@@ -75,7 +74,7 @@ shifty.taglist = mytaglist
 
 shifty.config.apps = {
 
-  --{ match = {"Gvim"                                       }, tag = "4:gvim", opacity = 1.0 },
+  { match = {"Gvim"                                       }, tag = "4:gvim", opacity = 1.0 },
   --{ match = {"dev -" }, tag = "3:dev", opacity = 1.0 },
   { match = {"Eterm", "Term -", "terminal" }, tag = "1:term", opacity = 1.0 },
   { match = {"^Download$", "Preferences", "VideoDownloadHelper","Downloads", "Firefox Preferences", }, float = true, intrusive = true },
@@ -83,8 +82,8 @@ shifty.config.apps = {
   { match = {"Eclipse"} , tag = "5:eclipse", opacity = 1.0       } ,
   { match = {"Gimp"                           }, tag = "6:gimp",  float = true , opacity = 1.0    },
   { match = {"gimp-image-window"              }, slave = true,  opacity = 1.0                     },
-  { match = {"MPlayer","ffplay","vlc"                       }, tag = "8:view", float = true,  opacity = 1.0             },
-  { match = {"Pidgin"                         }, tag = "7:msg",                                   },
+  { match = {"LibreOffice" }, tag = "7:office", opacity = 1.0 },
+  --{ match = {"MPlayer","ffplay","vlc"                       }, tag = "8:view", float = true,  opacity = 1.0             },
   { match = {"VirtualBox"                     }, tag = "9:vbox", float = true,  opacity = 1.0     },
   { match = {"lxappearence","Caml graphics"               }, float = true, opacity = 1.0                      },
   { match = {"evince", "gpicview","Epdfview", "f-spot"    }, float = true, tag = "8:view",                    },
@@ -281,10 +280,9 @@ mymemicon.image = image(beautiful.widget_mem)
         },
         mylayoutbox[s],
         myspacer,    
-        datewidget, mytimeicon,
+        datewidget, 
         s == 1 and mysystray or nil,
         myspacer,
-        --mpdwidget, mymusicicon,  
         myspacer,
         fswidget, mydiskicon,
         myspacer,
@@ -345,7 +343,7 @@ globalkeys = awful.util.table.join(
 -- Shifty
     
     awful.key({ modkey, "Shift"   }, "t",             shifty.add),
-    awful.key({ modkey, "Control"   }, "r",           shifty.rename),
+    awful.key({ modkey, "Shift"   }, "r",           shifty.rename),
     awful.key({ modkey, "Shift"   }, "w",           shifty.del),
 
     awful.key({ modkey, "Shift"   }, "Left",   shifty.shift_prev        ),
@@ -476,6 +474,26 @@ shifty.config.clientkeys = clientkeys
 -- }}}
 
 
+-- {{{ Rules
+awful.rules.rules = {
+    -- All clients will match this rule.
+    { rule = { },
+      properties = { border_width = beautiful.border_width,
+                     border_color = beautiful.border_normal,
+                     focus = true,
+                     keys = clientkeys,
+                     buttons = clientbuttons } },
+    { rule = { class = "MPlayer" },
+      properties = { floating = true } },
+    { rule = { class = "pinentry" },
+      properties = { floating = true } },
+    { rule = { class = "gimp" },
+      properties = { floating = true } },
+    -- Set Firefox to always map on tags number 2 of screen 1.
+    -- { rule = { class = "Firefox" },
+    --   properties = { tag = tags[1][2] } },
+}
+-- }}}
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.add_signal("manage", function (c, startup)
@@ -527,8 +545,6 @@ autorunApps =
 { 
    "xcompmgr -fF -D6 -cC -t -5 -l-6 -r5",
    "wicd-client",
-   "tint2",
-   "gnome-do",
    "gnome-volume-control-applet",
    "syndaemon -i 1 -d"
 }
