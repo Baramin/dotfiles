@@ -54,6 +54,7 @@ Bundle 'delimitMate.vim'
 " <leader>ce pour color editor
 Bundle 'ColorV'
 Bundle 'perl-support.vim'
+Bundle 'bash-support.vim'
 Bundle 'Rename'
 Bundle 'bitc/vim-bad-whitespace.git'
 
