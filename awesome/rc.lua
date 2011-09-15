@@ -13,6 +13,13 @@ require("shifty")
 require("vicious")
 require("teardrop")
 
+hostname = awful.util.pread("hostname"):gsub("\n", "")
+
+function file_exists(name)
+   local f=io.open(name,"r")
+   if f~=nil then io.close(f) return true else return false end
+end
+
 --if true then return end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
@@ -59,7 +66,7 @@ layouts =
 shifty.config.tags = {
   --  ["foo"] = { position = 13, init = true, },
   ["1:term"] = { position = 1, init = true, },
-  --["3:dev"] = { position = 3, spawn = "/home/ace/bin/rundev.sh" },
+  ["3:dev"] = { position = 3, },
   ["2:www"]  = { position = 2,  spawn = "firefox",},
   ["3:gvim"]  = { position = 4, },
   ["5:eclipse"]  = { position = 5, exclusive = true,  nopopup = true, },
@@ -69,7 +76,7 @@ shifty.config.tags = {
   ["9:vbox"] = { position = 9, exclusive = true, nopopup = true,  },
 }
 
-shifty.taglist = mytaglist 
+shifty.taglist = mytaglist
 -- Clients rules
 
 shifty.config.apps = {
@@ -272,15 +279,15 @@ mymemicon.image = image(beautiful.widget_mem)
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "top", screen = s })
     -- Add widgets to the wibox - order matters
-    mywibox[s].widgets = { 
+    mywibox[s].widgets = {
         {
             mytaglist[s],
             mypromptbox[s],
             layout = awful.widget.layout.horizontal.rightleft
         },
         mylayoutbox[s],
-        myspacer,    
-        datewidget, 
+        myspacer,
+        datewidget,
         s == 1 and mysystray or nil,
         myspacer,
         myspacer,
@@ -307,6 +314,15 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
+    -- all minimized clients are restored
+    awful.key({ modkey, "Shift"   }, "n",
+        function()
+            local tag = awful.tag.selected()
+                for i=1, #tag:clients() do
+                    tag:clients()[i].minimized=false
+                    tag:clients()[i]:redraw()
+            end
+        end),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey, "Shift"         }, "Escape", awful.tag.history.restore),
@@ -341,7 +357,7 @@ globalkeys = awful.util.table.join(
             end
         end),
 -- Shifty
-    
+
     awful.key({ modkey, "Shift"   }, "t",             shifty.add),
     awful.key({ modkey, "Shift"   }, "r",           shifty.rename),
     awful.key({ modkey, "Shift"   }, "w",           shifty.del),
@@ -350,7 +366,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "Right",  shifty.shift_next        ),
  --   awful.key({ modkey            }, "Escape", function() awful.tag.history.restore() end), -- move to prev tag by history
     awful.key({ modkey, "Shift"   }, "n", shifty.send_prev), -- move client to prev tag
-    awful.key({ modkey            }, "n", shifty.send_next), 
+    awful.key({ modkey            }, "n", shifty.send_next),
 
 --    shifty.config.clientkeys = clientkeys
     -- Standard program
@@ -366,13 +382,13 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
-    awful.key({ modkey            }, "Down",                          revelation.revelation),                    
-    awful.key({ modkey            }, "F12", function () awful.util.spawn("/home/ace/bin/toggleTrackpad.sh") end ),                    
+    awful.key({ modkey            }, "Down",                          revelation.revelation),
+    awful.key({ modkey            }, "F12", function () awful.util.spawn("/home/ace/bin/toggleTrackpad.sh") end ),
  -- Keybindings Perso
  --   awful.key({ modkey2}, "Left", function () awful.util.spawn("amixer -q sset Front 2dB-") end),
  --   awful.key({ modkey2}, "Right", function () awful.util.spawn("amixer -q sset Front 2dB+") end),
     awful.key({ modkey}, "v", function () awful.util.spawn("apps") end),
-    awful.key({ modkey}, "t", function () awful.util.spawn("gnome-terminal") end),
+    awful.key({ modkey}, "t", function () awful.util.spawn("gnome-terminal --hide-menubar") end),
     awful.key({ modkey}, "w", function () awful.util.spawn("firefox") end),
     awful.key({ modkey}, "e", function () awful.util.spawn("gvim") end),
     awful.key({ modkey }, "b", function ()
@@ -400,12 +416,12 @@ globalkeys = awful.util.table.join(
 
 
     -- Prompt
-    awful.key({ modkey },            "BackSpace",     
-    function () 
-      mypromptbox[mouse.screen]:run() 
+    awful.key({ modkey },            "BackSpace",
+    function ()
+      mypromptbox[mouse.screen]:run()
     end),
     -- Customs prompts
-    awful.key({ modkey }, "g", 
+    awful.key({ modkey }, "g",
     function ()
       awful.prompt.run({ prompt = "Urxvtc: " }, promptbox[mouse.screen].widget,
       function (name)
@@ -414,9 +430,9 @@ globalkeys = awful.util.table.join(
     end)
     )
 
-tagkeys = { '#10', '#11', '#12', '#13', '#14', '#15', '#16', '#17', '#18', '#19', '#20' } 
+tagkeys = { '#10', '#11', '#12', '#13', '#14', '#15', '#16', '#17', '#18', '#19', '#20' }
 for i=1,9 do
-  
+
   globalkeys = awful.util.table.join(globalkeys, awful.key({ modkey }, tagkeys[i],
   function ()
     local t = awful.tag.viewonly(shifty.getpos(i))
@@ -541,17 +557,18 @@ client.add_signal("unfocus", function(c)
 end)
 
 autorun = true
-autorunApps = 
-{ 
+autorunApps =
+{
    "xcompmgr -fF -D6 -cC -t -5 -l-6 -r5",
-   "wicd-client",
-   "gnome-volume-control-applet",
-   "syndaemon -i 1 -d"
+   "gnome-volume-control-applet"
 }
 if autorun then
-   for app = 1, #autorunApps do
-       awful.util.spawn(autorunApps[app])
-   end
- end
+  for app = 1, #autorunApps do
+    awful.util.spawn(autorunApps[app])
+  end
+end
 
+if file_exists("/home/ace/.config/awesome/rc-local.lua") then
+  dofile "/home/ace/.config/awesome/rc-local.lua"
+end
 
