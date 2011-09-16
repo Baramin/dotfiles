@@ -5,46 +5,46 @@ desc "install the dot files into user's home directory"
 task :install do
   replace_all = false
   Dir['*'].each do |file|
-    next if %w[Rakefile README.rdoc LICENSE awesome].include? file
-    
-    if File.exist?(File.join(ENV['HOME'], ".#{file.sub('.erb', '')}"))
-      if File.identical? file, File.join(ENV['HOME'], ".#{file.sub('.erb', '')}")
-        puts "identical ~/.#{file.sub('.erb', '')}"
+    next if %w[Rakefile README ].include? file
+    new_path = file.gsub('__','/').gsub('@@','.')
+    source = File.join(Dir.pwd, file)
+    destination = File.join(ENV['HOME'], new_path)
+    if File.exist?(destination)
+      if File.identical? destination, source
+        puts "identical #{source}"
       elsif replace_all
-        replace_file(file)
+        replace_file(source,destination)
       else
-        print "overwrite ~/.#{file.sub('.erb', '')}? [ynaq] "
+        print "overwrite #{source}? [ynaq] "
         case $stdin.gets.chomp
         when 'a'
           replace_all = true
-          replace_file(file)
+          replace_file(source,destination)
         when 'y'
-          replace_file(file)
+          replace_file(source,destination)
         when 'q'
           exit
         else
-          puts "skipping ~/.#{file.sub('.erb', '')}"
+          puts "skipping #{source}"
         end
       end
     else
-      link_file(file)
+      link_file(source,destination)
     end
+  end
+
+  unless File.exists?(File.join(ENV['HOME'],'.vim/bundle/vundle'))
+    puts "to install Vundle, issue :"
+    puts "git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle"
   end
 end
 
-def replace_file(file)
-  system %Q{rm -rf "$HOME/.#{file.sub('.erb', '')}"}
-  link_file(file)
+def replace_file(source,destination)
+  system %Q{rm -rf "#{destination}"}
+  link_file(source,destination)
 end
 
-def link_file(file)
-  if file =~ /.erb$/
-    puts "generating ~/.#{file.sub('.erb', '')}"
-    File.open(File.join(ENV['HOME'], ".#{file.sub('.erb', '')}"), 'w') do |new_file|
-      new_file.write ERB.new(File.read(file)).result(binding)
-    end
-  else
-    puts "linking ~/.#{file}"
-    system %Q{ln -fs "$PWD/#{file}" "$HOME/.#{file}"}
-  end
+def link_file(source,destination)
+    puts "linking #{source}"
+    system %Q{ln -fs "#{source}" "#{destination}"}
 end
