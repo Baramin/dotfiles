@@ -83,7 +83,7 @@ shifty.config.apps = {
 
   { match = {"Gvim"                                       }, tag = "4:gvim", opacity = 1.0 },
   --{ match = {"dev -" }, tag = "3:dev", opacity = 1.0 },
-  { match = {"Eterm", "Term -", "terminal" }, tag = "1:term", opacity = 1.0 },
+  { match = {"Eterm", "Term -", "terminal" }, opacity = 0.8 },
   { match = {"^Download$", "Preferences", "VideoDownloadHelper","Downloads", "Firefox Preferences", }, float = true, intrusive = true },
   { match = {"Firefox","Iceweasel","Vimperator","Shiretoko"} , tag = "2:www", opacity = 1.0       } ,
   { match = {"Eclipse"} , tag = "5:eclipse", opacity = 1.0       } ,
