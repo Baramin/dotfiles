@@ -66,10 +66,10 @@ layouts =
 shifty.config.tags = {
   --  ["foo"] = { position = 13, init = true, },
   ["1:term"] = { position = 1, init = true, },
-  ["3:dev"] = { position = 3, },
   ["2:www"]  = { position = 2,  spawn = "firefox",},
-  ["3:gvim"]  = { position = 4, },
-  ["5:eclipse"]  = { position = 5, exclusive = true,  nopopup = true, },
+  ["3:misc"] = { position = 3, },
+  ["4:gvim"]  = { position = 4, },
+  ["5:jdownload"]  = { position = 4, },
   ["6:gimp"] = { position = 6, exclusive = true, nopopup = true, spawn = "gimp", },
   ["7:office"]  = { position = 7, exclusive = true, },
   ["8:view"] = { position = 8, exclusive = true,  },
@@ -82,11 +82,10 @@ shifty.taglist = mytaglist
 shifty.config.apps = {
 
   { match = {"Gvim"                                       }, tag = "4:gvim", opacity = 1.0 },
-  --{ match = {"dev -" }, tag = "3:dev", opacity = 1.0 },
   { match = {"Eterm", "Term -", "terminal" }, opacity = 0.8 },
   { match = {"^Download$", "Preferences", "VideoDownloadHelper","Downloads", "Firefox Preferences", }, float = true, intrusive = true },
   { match = {"Firefox","Iceweasel","Vimperator","Shiretoko"} , tag = "2:www", opacity = 1.0       } ,
-  { match = {"Eclipse"} , tag = "5:eclipse", opacity = 1.0       } ,
+  { match = {"JDownloader"} , tag = "5:jdownload", opacity = 1.0       } ,
   { match = {"Gimp"                           }, tag = "6:gimp",  float = true , opacity = 1.0    },
   { match = {"gimp-image-window"              }, slave = true,  opacity = 1.0                     },
   { match = {"LibreOffice" }, tag = "7:office", opacity = 1.0 },
@@ -125,7 +124,6 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
     --                                { "Debian", debian.menu.Debian_menu.Debian },
-    --{ "Dev windows", function () awesome.spawn("/home/ace/bin/rundev.sh"); end },
     { "open terminal", terminal }
                                   }
                         })
