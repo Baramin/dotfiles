@@ -1,8 +1,8 @@
 urxvt*modifier : mod4
 urxvt*background : black
 urxvt*foreground : white
-urxvt*font : xft:Monaco:pixelsize=10
+urxvt*font : 8x13
 urxvt*transparent : true
-urxvt*shading : 30
+urxvt*shading : 25
 urxvt*tint : black
 urxvt*scrollBar : false

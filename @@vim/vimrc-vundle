@@ -28,7 +28,6 @@ Bundle "tpope/vim-surround.git"
 Bundle "tpope/vim-repeat.git"
 Bundle "tpope/vim-ragtag.git"
 Bundle "vividchalk.vim"
-"Bundle "tsaleh/vim-align.git"
 Bundle "tsaleh/vim-shoulda.git"
 Bundle "ervandew/supertab.git"
 Bundle "vim-ruby/vim-ruby.git"
@@ -57,4 +56,5 @@ Bundle 'perl-support.vim'
 Bundle 'bash-support.vim'
 Bundle 'Rename'
 Bundle 'bitc/vim-bad-whitespace.git'
+Bundle 'cakebaker/scss-syntax.vim.git'
 
