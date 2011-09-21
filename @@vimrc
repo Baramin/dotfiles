@@ -42,6 +42,7 @@ if has("gui")
   set guioptions-=T
   set guioptions-=e
   set guioptions-=L
+  set guioptions-=r
 endif
 
 

@@ -12,6 +12,7 @@ require("revelation")
 require("shifty")
 require("vicious")
 require("teardrop")
+require("scratch")
 
 hostname = awful.util.pread("hostname"):gsub("\n", "")
 
@@ -321,6 +322,7 @@ globalkeys = awful.util.table.join(
                     tag:clients()[i]:redraw()
             end
         end),
+    awful.key({ modkey }, "=", function () scratch.drop("urxvt", "bottom", nil, nil, 0.30) end),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey, "Shift"         }, "Escape", awful.tag.history.restore),
@@ -330,6 +332,7 @@ globalkeys = awful.util.table.join(
             awful.client.focus.byidx( 1)
             if client.focus then client.focus:raise() end
         end),
+    awful.key({ modkey, "Shift" }, "=", function () scratch.pad.toggle() end),
     awful.key({ modkey,           }, "k",
         function ()
             awful.client.focus.byidx(-1)
@@ -386,7 +389,8 @@ globalkeys = awful.util.table.join(
  --   awful.key({ modkey2}, "Left", function () awful.util.spawn("amixer -q sset Front 2dB-") end),
  --   awful.key({ modkey2}, "Right", function () awful.util.spawn("amixer -q sset Front 2dB+") end),
     awful.key({ modkey}, "v", function () awful.util.spawn("apps") end),
-    awful.key({ modkey}, "t", function () awful.util.spawn("gnome-terminal --hide-menubar") end),
+    --awful.key({ modkey}, "t", function () awful.util.spawn("gnome-terminal --hide-menubar") end),
+    awful.key({ modkey}, "t", function () awful.util.spawn("urxvtc") end),
     awful.key({ modkey}, "w", function () awful.util.spawn("firefox") end),
     awful.key({ modkey}, "e", function () awful.util.spawn("gvim") end),
     awful.key({ modkey }, "b", function ()
@@ -460,13 +464,14 @@ end
 
 clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "s",      function (c) c.ontop  = not c.ontop  end        ),
-    awful.key({ modkey,           }, "s",      function (c) c.sticky = not c.sticky end        ),
+    awful.key({ modkey }, "d", function (c) scratch.pad.set(c, 0.60, 0.60, true) end),
+    awful.key({ modkey, "shift"   }, "s",      function (c) c.sticky = not c.sticky end        ),
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
     awful.key({ modkey           }, "c",      function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
 --    awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
-    awful.key({ modkey, "Shift"   }, "r",      function (c) c:redraw()                       end),
+    --awful.key({ modkey, "Shift"   }, "r",      function (c) c:redraw()                       end),
   --  awful.key({ modkey,           }, "n",      function (c) c.minimized = not c.minimized    end),
     awful.key({ modkey,           }, "m",
         function (c)
@@ -566,7 +571,34 @@ if autorun then
   end
 end
 
+autorunApps = {
+  "urxvtd -q -f -o"
+}
+
+autorunAppsLocal = {
+  "wicd-client",
+  "gnome-volume-control-applet",
+  "syndaemon -i 1 -d"
+}
+
+if hostname == "ace-VirtualBox" then
+autorunAppsLocal = 
+{ 
+   "autokey"
+}
+end
+
 if file_exists("/home/ace/.config/awesome/rc-local.lua") then
   dofile "/home/ace/.config/awesome/rc-local.lua"
 end
+
+if autorun then
+  for app = 1, #autorunApps do
+    awful.util.spawn(autorunApps[app])
+  end
+  for app = 1, #autorunAppsLocal do
+    awful.util.spawn(autorunAppsLocal[app])
+  end
+end
+
 
