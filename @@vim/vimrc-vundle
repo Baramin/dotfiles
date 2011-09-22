@@ -57,4 +57,5 @@ Bundle 'bash-support.vim'
 Bundle 'Rename'
 Bundle 'bitc/vim-bad-whitespace.git'
 Bundle 'cakebaker/scss-syntax.vim.git'
+Bundle 'austintaylor/vim-indentobject.git'
 
