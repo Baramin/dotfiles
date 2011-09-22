@@ -11,6 +11,9 @@ if MySys() == "unix"
   set shell=/bin/bash
 end
 
+let g:Perl_GlobalTemplateFile = $HOME."/.vim/bundle/perl-support.vim/perl-support/templates/Templates"
+let g:BASH_GlobalTemplateFile = $HOME."/.vim/bundle/bash-support.vim/bash-support/templates/Templates"
+
 if MySys() == "windows"
   source $HOME/vimfiles/vimrc-vundle
 else
@@ -235,26 +238,6 @@ map <leader>cc :botright cope<cr>
 map <leader>n :cn<cr>
 map <leader>N :cp<cr>
 
-
-""""""""""""""""""""""""""""""
-" => bufExplorer plugin
-""""""""""""""""""""""""""""""
-let g:bufExplorerDefaultHelp=0
-let g:bufExplorerShowRelativePath=1
-
-
-""""""""""""""""""""""""""""""
-" => Minibuffer plugin
-""""""""""""""""""""""""""""""
-let g:miniBufExplModSelTarget = 1
-let g:miniBufExplorerMoreThanOne = 2
-let g:miniBufExplModSelTarget = 0
-let g:miniBufExplUseSingleClick = 1
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplVSplit = 25
-let g:miniBufExplSplitBelow=1
-
-let g:bufExplorerSortBy = "name"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Omni complete functions
