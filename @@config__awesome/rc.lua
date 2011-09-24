@@ -322,7 +322,6 @@ globalkeys = awful.util.table.join(
                     tag:clients()[i]:redraw()
             end
         end),
-    awful.key({ modkey }, "=", function () scratch.drop("urxvt", "bottom", nil, nil, 0.30) end),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey, "Shift"         }, "Escape", awful.tag.history.restore),
@@ -374,7 +373,6 @@ globalkeys = awful.util.table.join(
    -- awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
-    awful.key({ modkey            },"x",      function () teardrop("urxvt", "top") end),
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
@@ -389,8 +387,7 @@ globalkeys = awful.util.table.join(
  --   awful.key({ modkey2}, "Left", function () awful.util.spawn("amixer -q sset Front 2dB-") end),
  --   awful.key({ modkey2}, "Right", function () awful.util.spawn("amixer -q sset Front 2dB+") end),
     awful.key({ modkey}, "v", function () awful.util.spawn("apps") end),
-    --awful.key({ modkey}, "t", function () awful.util.spawn("gnome-terminal --hide-menubar") end),
-    awful.key({ modkey}, "t", function () awful.util.spawn("urxvtc") end),
+    awful.key({ modkey}, "t", function () awful.util.spawn("gnome-terminal --hide-menubar") end),
     awful.key({ modkey}, "w", function () awful.util.spawn("firefox") end),
     awful.key({ modkey}, "e", function () awful.util.spawn("gvim") end),
     awful.key({ modkey }, "b", function ()
@@ -421,14 +418,6 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey },            "BackSpace",
     function ()
       mypromptbox[mouse.screen]:run()
-    end),
-    -- Customs prompts
-    awful.key({ modkey }, "g",
-    function ()
-      awful.prompt.run({ prompt = "Urxvtc: " }, promptbox[mouse.screen].widget,
-      function (name)
-        exec("urxvtc -T "..name.."")
-      end)
     end)
     )
 
@@ -572,7 +561,6 @@ if autorun then
 end
 
 autorunApps = {
-  "urxvtd -q -f -o"
 }
 
 autorunAppsLocal = {
