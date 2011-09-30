@@ -1,0 +1,6 @@
+#!/bin/bash
+
+COUNT=$( ps -aef | egrep '/usr/bin/au[t]okey' | wc -l )
+if [[ $COUNT == 0 ]]; then
+  /usr/bin/autokey
+fi

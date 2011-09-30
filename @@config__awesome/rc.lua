@@ -572,7 +572,7 @@ autorunAppsLocal = {
 if hostname == "ace-VirtualBox" then
 autorunAppsLocal = 
 { 
-   "autokey"
+   "/home/ace/scripts/autokey"
 }
 end
 
