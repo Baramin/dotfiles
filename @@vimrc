@@ -196,11 +196,19 @@ endtry
 set laststatus=2
 
 " Format the statusline
-set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
 
 function! CurDir()
     let curdir = substitute(getcwd(), '/home/ace/', "~/", "g")
     return curdir
+endfunction
+
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    else
+        return ''
+    endif
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -403,6 +411,9 @@ set foldlevel=0
 
 " toggle swiches
 set pastetoggle=<F7>
+
+" if you paste and the indentation gets fscked just press <S-F2>
+inoremap <silent> <C-A> <ESC>u:set paste<CR>.:set nopaste<CR>gi
 
 " search hilight
 map     <F8>   :nohlsearch<CR>
