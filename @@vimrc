@@ -439,3 +439,6 @@ vnoremap > >gv
 
 silent! imap <unique> <buffer> <S-Space> <Plug>delimitMateS-Tab
 
+" Ignore les fichiers cache/socket/etc.. de rails
+set wildignore=tmp/**
+

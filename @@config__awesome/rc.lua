@@ -581,6 +581,12 @@ autorunAppsLocal = {
   "syndaemon -i 1 -d"
 }
 
+if hostname == "aspire" then
+autorunAppsLocal = 
+{ 
+   "jupiter-run"
+}
+end
 if hostname == "ace-VirtualBox" then
 autorunAppsLocal = 
 { 
