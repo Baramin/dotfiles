@@ -62,4 +62,5 @@ Bundle 'mikewest/vimroom'
 if (has('python'))
   Bundle 'dubenstein/vim-google-scribe'
 endif
+Bundle 'kien/ctrlp.vim'
 
