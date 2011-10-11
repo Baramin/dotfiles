@@ -58,4 +58,8 @@ Bundle 'Rename'
 Bundle 'bitc/vim-bad-whitespace.git'
 Bundle 'cakebaker/scss-syntax.vim.git'
 Bundle 'austintaylor/vim-indentobject.git'
+Bundle 'mikewest/vimroom'
+if (has('python'))
+  Bundle 'dubenstein/vim-google-scribe'
+endif
 

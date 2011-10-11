@@ -452,4 +452,9 @@ silent! imap <unique> <buffer> <S-Space> <Plug>delimitMateS-Tab
 
 " Ignore les fichiers cache/socket/etc.. de rails
 set wildignore=tmp/**
+if exists('*googlescribe#Complete')
+  au filetype vimwiki setl completefunc=googlescribe#Complete
+  au filetype markdown setl completefunc=googlescribe#Complete
+  au filetype gitcommit setl completefunc=googlescribe#Complete
+endif
 

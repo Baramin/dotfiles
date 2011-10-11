@@ -314,7 +314,7 @@ root.buttons(awful.util.table.join(
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
     -- all minimized clients are restored
-    awful.key({ modkey, "Shift"   }, "n",
+    awful.key({ modkey, "Shift"   }, "u",
         function()
             local tag = awful.tag.selected()
                 for i=1, #tag:clients() do
@@ -324,7 +324,7 @@ globalkeys = awful.util.table.join(
         end),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
-    awful.key({ modkey, "Shift"         }, "Escape", awful.tag.history.restore),
+    awful.key({ modkey, "Shift"   }, "Escape", awful.tag.history.restore),
 
     awful.key({ modkey,           }, "j",
         function ()
@@ -453,6 +453,7 @@ end
 
 clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "s",      function (c) c.ontop  = not c.ontop  end        ),
+    awful.key({ modkey,           }, "o",      awful.client.movetoscreen),
     awful.key({ modkey }, "d", function (c) scratch.pad.set(c, 0.60, 0.60, true) end),
     awful.key({ modkey, "shift"   }, "s",      function (c) c.sticky = not c.sticky end        ),
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
@@ -578,7 +579,8 @@ end
 if hostname == "ace-VirtualBox" then
 autorunAppsLocal = 
 { 
-   "/home/ace/scripts/autokey"
+   "/home/ace/scripts/autokey",
+   "/home/ace/scripts/resolution.sh"
 }
 end
 

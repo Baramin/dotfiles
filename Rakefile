@@ -39,6 +39,11 @@ task :install do
   end
 end
 
+desc "install vundle"
+task :installvundle do
+  system %Q{git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle}
+end
+
 def replace_file(source,destination)
   system %Q{rm -rf "#{destination}"}
   link_file(source,destination)
