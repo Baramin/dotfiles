@@ -22,3 +22,8 @@ function railsapp {
 alias reload='. ~/.bash_profile'
 alias evince='evince -f'
 
+# Git aliases found on
+# http://akahn.net/2011/10/12/working-through-git-conflicts-in-vim.html
+alias conflicts="git ls-files --unmerged | cut -f2 | uniq"
+alias gc="git commit --verbose"
+
