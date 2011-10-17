@@ -566,20 +566,24 @@ autorunApps = {
 
 autorunAppsLocal = {
   "wicd-client",
-  "gnome-volume-control-applet",
+  "gnome-sound-applet",
   "syndaemon -i 1 -d"
 }
 
 if hostname == "aspire" then
 autorunAppsLocal = 
 { 
-   "jupiter-run"
+   "jupiter-run",
+   "wicd-client",
+   "gnome-sound-applet",
+   "syndaemon -i 1 -d"
 }
 end
 if hostname == "ace-VirtualBox" then
 autorunAppsLocal = 
 { 
    "/home/ace/scripts/autokey",
+   "gnome-sound-applet",
    "/home/ace/scripts/resolution.sh"
 }
 end
