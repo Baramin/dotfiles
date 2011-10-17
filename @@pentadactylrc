@@ -17,6 +17,8 @@ map -m hints G     -ex normal! G
 com tabrename -nargs=1 -literal=0 -js content.document.title = args[0];
 
 map <silent> <F1> :set go!=TB<CR>
+nmap <silent> > :tabmove +1<CR>
+nmap <silent> < :tabmove -1<CR>
 
 
 " vim: set ft=pentadactyl:
