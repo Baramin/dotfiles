@@ -63,4 +63,6 @@ if (has('python'))
   Bundle 'dubenstein/vim-google-scribe'
 endif
 Bundle 'kien/ctrlp.vim'
+Bundle 'kurkale6ka/vim-quotes'
+Bundle 'jceb/vim-orgmode.git'
 

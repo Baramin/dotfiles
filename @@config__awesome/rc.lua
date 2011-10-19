@@ -77,9 +77,6 @@ shifty.config.tags = {
   ["9:vbox"] = { position = 9, exclusive = true, nopopup = true,  },
 }
 
-shifty.taglist = mytaglist
--- Clients rules
-
 shifty.config.apps = {
 
   { match = {"Gvim"                                       }, tag = "4:gvim", opacity = 1.0 },
@@ -302,6 +299,9 @@ mymemicon.image = image(beautiful.widget_mem)
         layout = awful.widget.layout.horizontal.rightleft
     }
 end
+
+shifty.taglist = mytaglist
+
 -- }}}
 -- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
@@ -359,7 +359,7 @@ globalkeys = awful.util.table.join(
 -- Shifty
 
     awful.key({ modkey, "Shift"   }, "t",             shifty.add),
-    awful.key({ modkey, "Shift"   }, "r",           shifty.rename),
+    --awful.key({ modkey, "Shift"   }, "r",           shifty.rename),
     awful.key({ modkey, "Shift"   }, "w",           shifty.del),
 
     awful.key({ modkey, "Shift"   }, "Left",   shifty.shift_prev        ),
@@ -461,7 +461,7 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
 --    awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
-    --awful.key({ modkey, "Shift"   }, "r",      function (c) c:redraw()                       end),
+    awful.key({ modkey, "Shift"   }, "r",      function (c) c:redraw()                       end),
   --  awful.key({ modkey,           }, "n",      function (c) c.minimized = not c.minimized    end),
     awful.key({ modkey,           }, "m",
         function (c)
@@ -553,7 +553,7 @@ autorun = true
 autorunApps =
 {
    "xcompmgr -fF -D6 -cC -t -5 -l-6 -r5",
-   "gnome-volume-control-applet"
+   "gnome-sound-applet"
 }
 if autorun then
   for app = 1, #autorunApps do
