@@ -552,7 +552,7 @@ end)
 autorun = true
 autorunApps =
 {
-   "xcompmgr -fF -D6 -cC -t -5 -l-6 -r5",
+   "xcompmgr -CcfF -I-.015 -O-.03 -D4 -t-5 -l-5 -r4.2 -o.75",
    "gnome-sound-applet"
 }
 if autorun then
