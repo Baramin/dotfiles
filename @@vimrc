@@ -73,11 +73,11 @@ set showmode
 set showcmd
 set wildmenu
 set wildmode=list:longest
-"set t_Co=256
+set t_Co=256
 "if has("gui_running")
   "colorscheme solarized
 "else
-  colorscheme vividchalk
+  colorscheme zenburn
 "end
 
 
@@ -459,4 +459,13 @@ if exists('*googlescribe#Complete')
   au filetype markdown setl completefunc=googlescribe#Complete
   au filetype gitcommit setl completefunc=googlescribe#Complete
 endif
+
+" Always show line numbers, but only in current window.
+set number
+au WinEnter * :setlocal number
+au WinLeave * :setlocal nonumber
+"
+" " Automatically resize vertical splits.
+au WinEnter * :set winfixheight
+au WinEnter * :wincmd =
 

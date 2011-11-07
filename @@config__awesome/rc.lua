@@ -552,7 +552,6 @@ end)
 autorun = true
 autorunApps =
 {
-   "xcompmgr -CcfF -I-.015 -O-.03 -D4 -t-5 -l-5 -r4.2 -o.75",
    "gnome-sound-applet"
 }
 if autorun then
@@ -566,8 +565,8 @@ autorunApps = {
 
 autorunAppsLocal = {
   "wicd-client",
-  "gnome-sound-applet",
-  "syndaemon -i 1 -d"
+  "syndaemon -i 1 -d",
+  "xcompmgr -CcfF -I-.015 -O-.03 -D4 -t-5 -l-5 -r4.2 -o.75",
 }
 
 if hostname == "aspire" then
@@ -575,16 +574,16 @@ autorunAppsLocal =
 { 
    "jupiter-run",
    "wicd-client",
-   "gnome-sound-applet",
    "syndaemon -i 1 -d"
+
 }
 end
 if hostname == "ace-VirtualBox" then
 autorunAppsLocal = 
 { 
    "/home/ace/scripts/autokey",
-   "gnome-sound-applet",
-   "/home/ace/scripts/resolution.sh"
+   "/home/ace/scripts/resolution.sh",
+   "cairo-compmgr"
 }
 end
 

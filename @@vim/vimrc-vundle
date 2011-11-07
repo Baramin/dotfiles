@@ -52,7 +52,7 @@ Bundle "tsaleh/vim-matchit"
 Bundle 'delimitMate.vim'
 " <leader>ce pour color editor
 Bundle 'ColorV'
-Bundle 'perl-support.vim'
+Bundle 'benizi/perl-support.vim'
 Bundle 'bash-support.vim'
 Bundle 'Rename'
 Bundle 'bitc/vim-bad-whitespace.git'
@@ -65,4 +65,6 @@ endif
 Bundle 'kien/ctrlp.vim'
 Bundle 'kurkale6ka/vim-quotes'
 Bundle 'jceb/vim-orgmode.git'
+Bundle 'Specky'
 
+filetype plugin indent on
