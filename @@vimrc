@@ -176,10 +176,8 @@ nnoremap <leader>w <C-w>v<C-w>l
 map <leader>ba :1,300 bd!<cr>
 
 " Use the arrows to something usefull
-"map <right> :bn<cr>
-"map <left> :bp<cr>
-map <C-right> <ESC>:bn<CR>
-map <C-left> <ESC>:bp<CR>
+map <silent> <S-right> <ESC>:bn<CR>
+map <silent> <S-left> <ESC>:bp<CR>
 
 " When pressing <leader>cd switch to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>
@@ -416,6 +414,19 @@ set pastetoggle=<F7>
 
 " if you paste and the indentation gets fscked just press <S-F2>
 inoremap <silent> <C-A> <ESC>u:set paste<CR>.:set nopaste<CR>gi
+
+" Search for selected text, forwards or backwards.
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy?<C-R><C-R>=substitute(
+  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+
 
 " search hilight
 map     <F8>   :nohlsearch<CR>
