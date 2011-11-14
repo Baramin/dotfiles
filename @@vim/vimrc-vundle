@@ -66,5 +66,6 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'kurkale6ka/vim-quotes'
 Bundle 'jceb/vim-orgmode.git'
 Bundle 'Specky'
+Bundle 'vimwiki'
 
 filetype plugin indent on

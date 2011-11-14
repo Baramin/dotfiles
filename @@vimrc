@@ -7,12 +7,14 @@ fun! MySys()
   endif
 endfun
 
+let $MYVIMRC=expand("<sfile>")
+
 if MySys() == "unix"
   set shell=/bin/bash
 end
 
-let g:Perl_GlobalTemplateFile = $HOME."/.vim/bundle/perl-support.vim/perl-support/templates/Templates"
 let g:BASH_GlobalTemplateFile = $HOME."/.vim/bundle/bash-support.vim/bash-support/templates/Templates"
+let g:Perl_Support_Root_Dir = $HOME."/.vim/bundle/perl-support.vim"
 
 let g:ctrlp_working_path_mode = 0
 
