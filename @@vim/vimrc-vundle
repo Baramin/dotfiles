@@ -67,5 +67,7 @@ Bundle 'kurkale6ka/vim-quotes'
 Bundle 'jceb/vim-orgmode.git'
 Bundle 'Specky'
 Bundle 'vimwiki'
+Bundle 'skammer/vim-css-color'
 
 filetype plugin indent on
+
