@@ -39,9 +39,6 @@ Bundle "nanotech/jellybeans.vim.git"
 Bundle "Lokaltog/vim-easymotion.git"
 Bundle "vim-scripts/vibrantink.git"
 Bundle "vim-scripts/jQuery.git"
-if has('ruby')
-  Bundle "vim-scripts/Command-T.git"
-endif
 Bundle "mru.vim"
 Bundle "scratch"
 Bundle "wombat256.vim"
@@ -68,6 +65,9 @@ Bundle 'jceb/vim-orgmode.git'
 Bundle 'Specky'
 Bundle 'vimwiki'
 Bundle 'skammer/vim-css-color'
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'ZoomWin'
 
 filetype plugin indent on
 
