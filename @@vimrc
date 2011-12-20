@@ -484,3 +484,6 @@ au WinLeave * :setlocal nonumber
 au WinEnter * :set winfixheight
 au WinEnter * :wincmd =
 
+" Insere un caractère avec Espace
+nmap <Space> i<Space><Esc>r
+
