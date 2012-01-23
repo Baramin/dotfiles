@@ -13,11 +13,15 @@ end
 
 Bundle 'gmarik/vundle'
 
+" Libraries utiles
 Bundle "MarcWeber/vim-addon-mw-utils.git"
 Bundle "tomtom/tlib_vim.git"
+
 Bundle "ornicar/snipmate.vim.git"
 Bundle "honza/snipmate-snippets.git"
+
 Bundle "scrooloose/nerdtree.git"
+
 Bundle "tpope/vim-cucumber.git"
 Bundle "tpope/vim-git.git"
 Bundle "tpope/vim-fugitive.git"
@@ -28,20 +32,20 @@ Bundle "tpope/vim-surround.git"
 Bundle "tpope/vim-repeat.git"
 Bundle "tpope/vim-ragtag.git"
 Bundle "vividchalk.vim"
-Bundle "tsaleh/vim-shoulda.git"
-Bundle "ervandew/supertab.git"
+" Bundle "tsaleh/vim-shoulda.git"
+" Bundle "ervandew/supertab.git"
 Bundle "vim-ruby/vim-ruby.git"
 Bundle "mileszs/ack.vim.git"
 Bundle "scrooloose/nerdcommenter.git"
-Bundle "sjl/gundo.vim.git"
+" Bundle "sjl/gundo.vim.git"
 Bundle "nathanaelkane/vim-indent-guides.git"
-Bundle "nanotech/jellybeans.vim.git"
+" Bundle "nanotech/jellybeans.vim.git"
 Bundle "Lokaltog/vim-easymotion.git"
-Bundle "vim-scripts/vibrantink.git"
+" Bundle "vim-scripts/vibrantink.git"
 Bundle "vim-scripts/jQuery.git"
 Bundle "mru.vim"
-Bundle "scratch"
-Bundle "wombat256.vim"
+" Bundle "scratch"
+" Bundle "wombat256.vim"
 Bundle "Zenburn"
 " Ctrl-E pour expand : e.g. div > ul > li * 4 <C-E>
 Bundle "bingaman/vim-sparkup"
@@ -55,19 +59,20 @@ Bundle 'Rename'
 Bundle 'bitc/vim-bad-whitespace.git'
 Bundle 'cakebaker/scss-syntax.vim.git'
 Bundle 'austintaylor/vim-indentobject.git'
-Bundle 'mikewest/vimroom'
-if (has('python'))
-  Bundle 'dubenstein/vim-google-scribe'
-endif
+" Bundle 'mikewest/vimroom'
+"if (has('python'))
+"  Bundle 'dubenstein/vim-google-scribe'
+"endif
 Bundle 'kien/ctrlp.vim'
 Bundle 'kurkale6ka/vim-quotes'
-Bundle 'jceb/vim-orgmode.git'
+" Bundle 'jceb/vim-orgmode.git'
 Bundle 'Specky'
 Bundle 'vimwiki'
 Bundle 'skammer/vim-css-color'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'ZoomWin'
+" Bundle 'ZoomWin'
+Bundle 'Lokaltog/vim-powerline.git'
 
 filetype plugin indent on
 
