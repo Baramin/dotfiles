@@ -9,12 +9,21 @@ endfun
 
 let $MYVIMRC=expand("<sfile>")
 
+:
 if MySys() == "unix"
   set shell=/bin/bash
 end
 
 let g:BASH_GlobalTemplateFile = $HOME."/.vim/bundle/bash-support.vim/bash-support/templates/Templates"
 let g:Perl_Support_Root_Dir = $HOME."/.vim/bundle/perl-support.vim"
+let g:Powerline_symbols = 'fancy'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+if isdirectory(expand("d:/donnees/vim/vimfiles"))
+  let $HOME="d:/donnees/vim" 
+end
 
 let g:ctrlp_working_path_mode = 0
 
@@ -89,9 +98,10 @@ set t_Co=256
 syntax enable "Enable syntax hl
 
 if MySys() == "unix"
-  set gfn=Monaco\ 10
+  set gfn=Monaco\ for\ Powerline\ 10
 else
-  set gfn=Monaco:h10:cANSI
+  set gfn=Bitstream_Vera_Sans_Mono_for_Po:h11:cANSI
+  " set gfn=Monaco:h10:cANSI
 end
 
 set encoding=utf8
@@ -486,4 +496,33 @@ au WinEnter * :wincmd =
 
 " Insere un caractère avec Espace
 nmap <Space> i<Space><Esc>r
+
+function! WinMove(key) 
+  let t:curwin = winnr()
+  exec "wincmd ".a:key
+  if (t:curwin == winnr()) "we havent moved
+    if (match(a:key,'[jk]')) "were we going up/down
+      wincmd v
+    else 
+      wincmd s
+    endif
+    exec "wincmd ".a:key
+  endif
+endfunction
+ 
+try
+  unmap <leader>lbs
+catch
+endtry
+map <leader>h              :call WinMove('h')<cr>
+map <leader>k              :call WinMove('k')<cr>
+map <leader>l              :call WinMove('l')<cr>
+map <leader>j              :call WinMove('j')<cr>
+map <leader>wo              :wincmd o<cr>
+map <leader>wc              :wincmd q<cr>
+map <leader>wr              <C-W>r
+nmap <left>                 :3wincmd <<cr>
+nmap <right>                :3wincmd ><cr>
+nmap <up>                   :3wincmd +<cr>
+nmap <down>                 :3wincmd -<cr>
 

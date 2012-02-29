@@ -17,8 +17,9 @@ Bundle 'gmarik/vundle'
 Bundle "MarcWeber/vim-addon-mw-utils.git"
 Bundle "tomtom/tlib_vim.git"
 
-Bundle "ornicar/snipmate.vim.git"
-Bundle "honza/snipmate-snippets.git"
+" Bundle "ornicar/snipmate.vim.git"
+" Bundle "honza/snipmate-snippets.git"
+Bundle "SirVer/ultisnips"
 
 Bundle "scrooloose/nerdtree.git"
 
@@ -33,7 +34,7 @@ Bundle "tpope/vim-repeat.git"
 Bundle "tpope/vim-ragtag.git"
 Bundle "vividchalk.vim"
 " Bundle "tsaleh/vim-shoulda.git"
-" Bundle "ervandew/supertab.git"
+Bundle "ervandew/supertab.git"
 Bundle "vim-ruby/vim-ruby.git"
 Bundle "mileszs/ack.vim.git"
 Bundle "scrooloose/nerdcommenter.git"
