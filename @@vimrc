@@ -342,8 +342,8 @@ vnoremap <F1> <ESC>
 
 
 set list
-"set listchars=tab:▸\ ,eol:¬
-set listchars=tab:▸\ 
+set listchars=tab:▸\ ,eol:¬
+"set listchars=tab:▸\ 
 
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
@@ -423,6 +423,7 @@ set foldlevel=0
 
 " toggle swiches
 set pastetoggle=<F7>
+
 
 " if you paste and the indentation gets fscked just press <S-F2>
 inoremap <silent> <C-A> <ESC>u:set paste<CR>.:set nopaste<CR>gi
@@ -525,4 +526,18 @@ nmap <left>                 :3wincmd <<cr>
 nmap <right>                :3wincmd ><cr>
 nmap <up>                   :3wincmd +<cr>
 nmap <down>                 :3wincmd -<cr>
+
+" Force Saving Files that Require Root Permission
+cmap w!! %!sudo tee > /dev/null %
+
+" moves word under the cursor to the left/right (from the vim wiki)
+nnoremap <leader><Left>  "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o><C-l>
+nnoremap <leader><Right> "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o>/\w\+\_W\+<CR><C-l>
+
+" déplace la selection vers le haut/bas
+nmap <C-Up> ddkP
+nmap <C-Down> ddp
+vmap <C-Up> xkP`[V`]
+vmap <C-Down> xp`[V`]
+
 

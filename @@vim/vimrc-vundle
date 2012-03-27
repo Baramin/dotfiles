@@ -51,7 +51,7 @@ Bundle "Zenburn"
 " Ctrl-E pour expand : e.g. div > ul > li * 4 <C-E>
 Bundle "bingaman/vim-sparkup"
 Bundle "tsaleh/vim-matchit"
-Bundle 'delimitMate.vim'
+" Bundle 'delimitMate.vim'
 " <leader>ce pour color editor
 Bundle 'ColorV'
 Bundle 'benizi/perl-support.vim'
