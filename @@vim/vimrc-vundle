@@ -17,9 +17,12 @@ Bundle 'gmarik/vundle'
 Bundle "MarcWeber/vim-addon-mw-utils.git"
 Bundle "tomtom/tlib_vim.git"
 
-" Bundle "ornicar/snipmate.vim.git"
-" Bundle "honza/snipmate-snippets.git"
-Bundle "SirVer/ultisnips"
+if has("python")
+  Bundle "SirVer/ultisnips"
+else
+  Bundle "ornicar/snipmate.vim.git"
+  Bundle "honza/snipmate-snippets.git"
+endif
 
 Bundle "scrooloose/nerdtree.git"
 
@@ -69,7 +72,7 @@ Bundle 'kurkale6ka/vim-quotes'
 " Bundle 'jceb/vim-orgmode.git'
 Bundle 'Specky'
 Bundle 'vimwiki'
-Bundle 'skammer/vim-css-color'
+Bundle 'ap/vim-css-color'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 " Bundle 'ZoomWin'
