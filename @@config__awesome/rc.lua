@@ -563,29 +563,23 @@ end
 autorunApps = {
 }
 
-autorunAppsLocal = {
-  "wicd-client",
-  "syndaemon -i 1 -d",
-  "xcompmgr -CcfF -I-.015 -O-.03 -D4 -t-5 -l-5 -r4.2 -o.75",
-}
+--to move to rc-local.lua
+--autorunAppsLocal = {
+  --"wicd-client",
+  --"syndaemon -i 1 -d",
+  --"xcompmgr -CcfF -I-.015 -O-.03 -D4 -t-5 -l-5 -r4.2 -o.75",
+--}
 
-if hostname == "aspire" then
-autorunAppsLocal = 
-{ 
-   "jupiter-run",
-   "wicd-client",
-   "syndaemon -i 1 -d"
+--to move to rc-local.lua
+--if hostname == "aspire" then
+--autorunAppsLocal = 
+--{ 
+   --"jupiter-run",
+   --"wicd-client",
+   --"syndaemon -i 1 -d"
 
-}
-end
-if hostname == "ace-VirtualBox" then
-autorunAppsLocal = 
-{ 
-   "/home/ace/scripts/autokey",
-   "/home/ace/scripts/resolution.sh",
-   "cairo-compmgr"
-}
-end
+--}
+--end
 
 if file_exists("/home/ace/.config/awesome/rc-local.lua") then
   dofile "/home/ace/.config/awesome/rc-local.lua"
