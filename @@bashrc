@@ -123,3 +123,8 @@ fi
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [ -f ~/perl5/perlbrew/etc/bashrc ] && source ~/perl5/perlbrew/etc/bashrc
 
+# git clone https://github.com/nojhan/liquidprompt.git
+[ -f ~/.liquidpromptrc ] && source ~/.liquidpromptrc
+
+[ -f ~/.liquidprompt ] && source ~/.liquidprompt
+
