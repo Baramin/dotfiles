@@ -44,7 +44,12 @@ Bundle "scrooloose/nerdcommenter.git"
 " Bundle "sjl/gundo.vim.git"
 Bundle "nathanaelkane/vim-indent-guides.git"
 " Bundle "nanotech/jellybeans.vim.git"
+
+let g:EasyMotion_leader_key = '<Space>'
+"let g:EasyMotion_do_mapping=0
+let g:EasyMotion_do_shade = 1
 Bundle "Lokaltog/vim-easymotion.git"
+
 " Bundle "vim-scripts/vibrantink.git"
 Bundle "vim-scripts/jQuery.git"
 Bundle "mru.vim"
@@ -77,6 +82,8 @@ Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 " Bundle 'ZoomWin'
 Bundle 'Lokaltog/vim-powerline.git'
+Bundle 'golden-ratio'
+Bundle 'Syntastic'
 
 filetype plugin indent on
 
