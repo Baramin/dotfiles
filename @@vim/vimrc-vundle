@@ -84,6 +84,7 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'golden-ratio'
 Bundle 'Syntastic'
+Bundle 'terryma/vim-multiple-cursors'
 
 filetype plugin indent on
 
