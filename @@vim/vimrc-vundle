@@ -85,6 +85,7 @@ Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'golden-ratio'
 Bundle 'Syntastic'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'mhinz/vim-startify'
 
 filetype plugin indent on
 

@@ -552,7 +552,7 @@ end)
 autorun = true
 autorunApps =
 {
-   "gnome-sound-applet"
+   --"gnome-sound-applet"
 }
 if autorun then
   for app = 1, #autorunApps do
