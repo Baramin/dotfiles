@@ -82,10 +82,13 @@ Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 " Bundle 'ZoomWin'
 Bundle 'Lokaltog/vim-powerline.git'
-Bundle 'golden-ratio'
 Bundle 'Syntastic'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'mhinz/vim-startify'
+
+Bundle 'sjbach/lusty'
+Bundle 'maxbrunsfeld/vim-yankstack'
+Bundle 'gtls/vim-cottidie'
 
 filetype plugin indent on
 
